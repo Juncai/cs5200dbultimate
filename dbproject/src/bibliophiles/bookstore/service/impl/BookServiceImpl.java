@@ -14,8 +14,8 @@ public class BookServiceImpl implements BookService {
 		return bookDao.all();
 	}
 
-	public List<Book> findByCategory(String category) {
-		return bookDao.findByCategory(category);
+	public List<Book> findByCategoryID(String categoryID) {
+		return bookDao.findByCategoryID(categoryID);
 	}
 
 	public Book findByIsbn(String isbn) {
@@ -32,6 +32,10 @@ public class BookServiceImpl implements BookService {
 
 	public void add(Book book) {
 		bookDao.add(book);
+	}
+
+	public List<Book> findByPublisherID(String publisherID) {
+		return bookDao.findByPublisherID(publisherID);
 	}
 
 }

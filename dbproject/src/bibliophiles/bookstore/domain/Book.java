@@ -1,16 +1,26 @@
 package bibliophiles.bookstore.domain;
 
+import java.util.List;
+
 public class Book {
 	private String isbn;
 	private String title;
 	private double price;
 	private String cover;
 	private double rating;
-	private String category;
 	private boolean isdel;
 	private boolean reserved;
-	
+	private Category category;
 	private Publisher publisher;
+	private List<Author> authors;
+
+	public List<Author> getAuthors() {
+		return authors;
+	}
+
+	public void setAuthors(List<Author> authors) {
+		this.authors = authors;
+	}
 
 	public String getIsbn() {
 		return isbn;
@@ -54,14 +64,6 @@ public class Book {
 		this.rating = rating;
 	}
 
-	public String getCategory() {
-		return category;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
-	}
-
 	public boolean isIsdel() {
 		return isdel;
 	}
@@ -86,29 +88,36 @@ public class Book {
 		this.publisher = publisher;
 	}
 
+	public Category getCategory() {
+		return category;
+	}
 
+	public void setCategory(Category category) {
+		this.category = category;
+	}
 
 	public Book(String isbn, String title, double price, String cover,
-			double rating, String category, boolean isdel, boolean reserved,
-			Publisher publisher) {
+			double rating, boolean isdel, boolean reserved, Category category,
+			Publisher publisher, List<Author> authors) {
 		super();
 		this.isbn = isbn;
 		this.title = title;
 		this.price = price;
 		this.cover = cover;
 		this.rating = rating;
-		this.category = category;
 		this.isdel = isdel;
 		this.reserved = reserved;
+		this.category = category;
 		this.publisher = publisher;
+		this.authors = authors;
 	}
 
 	@Override
 	public String toString() {
 		return "Book [isbn=" + isbn + ", title=" + title + ", price=" + price
-				+ ", cover=" + cover + ", rating=" + rating + ", category="
-				+ category + ", isdel=" + isdel + ", reserved=" + reserved
-				+ ", publisher=" + publisher + "]";
+				+ ", cover=" + cover + ", rating=" + rating + ", isdel="
+				+ isdel + ", reserved=" + reserved + ", category=" + category
+				+ ", publisher=" + publisher + ", authors=" + authors + "]";
 	}
 
 	public Book() {

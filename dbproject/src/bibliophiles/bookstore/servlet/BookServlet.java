@@ -26,7 +26,7 @@ public class BookServlet extends BaseServlet {
 	
 	public String query(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		List<Book> bookList = bookService.findByCategory(request.getParameter("category")); 
+		List<Book> bookList = bookService.findByCategoryID(request.getParameter("categoryID")); 
 		request.setAttribute("list", bookList);
 		return "/jsps/booklist.jsp";
 	}

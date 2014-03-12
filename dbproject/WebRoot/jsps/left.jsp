@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<base target="body" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>LeftNavigationBar</title>
 <style type="text/css">
@@ -24,14 +25,14 @@
 
 <body>
 	<div>
-    	<a href="#">All Category</a>
+    	<a href="<c:url value='/BookServlet?method=all'/>">All Category</a>
     </div>
+    
+    <c:forEach items="${list }" var="category">
 	<div>
-    	<a href="#">Novel</a>
+    	<a href="<c:url value='/BookServlet?method=query&categoryID=${category.categoryID }'/>">${category.categoryname }</a>
     </div>
-    <div>
-    	<a href="#">Education</a>
-    </div>
+	</c:forEach>   
 </body>
 </html>
 

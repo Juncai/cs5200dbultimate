@@ -8,7 +8,8 @@ import bibliophiles.bookstore.domain.Book;
 
 public interface BookService {
 	List<Book> all();
-	List<Book> findByCategory(String category);
+	List<Book> findByCategoryID(String categoryID);
+	List<Book> findByPublisherID(String publisherID);
 	Book findByIsbn(String isbn);
 	void mod(Book book);
 	void del(String isbn);

@@ -23,6 +23,7 @@ public class IndexServlet extends BaseServlet {
 	
 	public String left(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		return "/jsps/left.jsp";
+		return "/CategoryServlet?method=all";
+//		return "/jsps/left.jsp";
 	}
 }

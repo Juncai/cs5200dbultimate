@@ -33,9 +33,11 @@
   <body>
   <c:forEach items="${list }" var="book"> 
   <div class="icon">
-    <a href="<c:url value='/BookServlet?method=load&bid=${book.bid }'/>"><img src="<c:url value='/${book.image }'/>"/></a>
+  	<%--book_img/9317290-1_l.jpg --%>
+  	<%-- <a href="<c:url value='/BookServlet?method=load&isbn=${book.isbn }'/>"><img src="/onlinebookstore/book_img/9317290-1_l.jpg"/></a> --%>
+    <a href="<c:url value='/BookServlet?method=load&isbn=${book.isbn }'/>"><img src="<c:url value='/${book.cover }'/>"/></a>
       <br/>
-   	<a href="<c:url value='/BookServlet?method=load&bid=${book.bid }'/>">${book.bname }</a>
+   	<a href="<c:url value='/BookServlet?method=load&isbn=${book.isbn }'/>">${book.title }</a>
   </div>
 </c:forEach>
   </body>
