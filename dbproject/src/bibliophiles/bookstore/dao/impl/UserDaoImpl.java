@@ -7,8 +7,6 @@ import jon.jdbc.utils.JdbcUtils;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
-
 import bibliophiles.bookstore.dao.UserDao;
 import bibliophiles.bookstore.domain.User;
 
