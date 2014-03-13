@@ -17,7 +17,7 @@
      <input type="text" name="email" id="email" />
    </p>
    <p>Password*: 
-     <input type="text" name="password" id="password" />
+     <input type="password" name="password" id="password" />
    </p>
    <p>First Name*: 
      <input type="text" name="firstname" id="firstname" />

@@ -52,16 +52,16 @@
   
   <body>
   <div>
-    <img src="<c:url value='/${book.image }'/>" border="0"/>
+    <img src="<c:url value='/${book.cover }'/>" border="0"/>
   </div>
   <ul>
-    <li>书名：${book.bname }</li>
-    <li>作者：${book.author }</li>
-    <li>单价：${book.price }元</li>
+    <li>Title: ${book.title }</li>
+    <li>Authors: <c:forEach items="${book.authors }" var="author">${author.firstname } ${author.lastname }    </c:forEach></li>
+    <li>Price: $ ${book.price }</li>
   </ul>
   <form id="form" action="<c:url value='/cart/CartServlet'/>" method="post">
   	<input type="hidden" name="method" value="add"/>
-  	<input type="hidden" name="bid" value="${book.bid }"/>
+  	<input type="hidden" name="isbn" value="${book.isbn }"/>
   	<input type="text" size="3" name="count" value="1"/>
   </form>
   <a href="javascript:document.getElementById('form').submit();"></a>

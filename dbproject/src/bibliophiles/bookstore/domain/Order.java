@@ -1,6 +1,8 @@
 package bibliophiles.bookstore.domain;
 
 import java.util.Date;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 
 
@@ -11,6 +13,10 @@ public class Order {
 	private User user;
 	private Address address;
 	private int state;
+	
+	private Set<OrderItem> orderItemSet = new LinkedHashSet<OrderItem>();
+	
+	
 	public String getOrderID() {
 		return orderID;
 	}
