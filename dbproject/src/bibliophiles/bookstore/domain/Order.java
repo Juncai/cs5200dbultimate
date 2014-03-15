@@ -16,7 +16,23 @@ public class Order {
 	
 	private Set<OrderItem> orderItemSet = new LinkedHashSet<OrderItem>();
 	
+	public void addOrderItem(OrderItem orderItem) {
+		orderItemSet.add(orderItem);
+	}
 	
+	public void removeOrderItem(OrderItem orderItem) {
+		orderItemSet.remove(orderItem);
+	}
+	
+	
+	public Set<OrderItem> getOrderItemSet() {
+		return orderItemSet;
+	}
+
+	public void setOrderItemSet(Set<OrderItem> orderItemSet) {
+		this.orderItemSet = orderItemSet;
+	}
+
 	public String getOrderID() {
 		return orderID;
 	}
@@ -53,14 +69,10 @@ public class Order {
 	public void setState(int state) {
 		this.state = state;
 	}
-	@Override
-	public String toString() {
-		return "Order [orderID=" + orderID + ", ordertime=" + ordertime
-				+ ", total=" + total + ", user=" + user + ", address="
-				+ address + ", state=" + state + "]";
-	}
+
+	
 	public Order(String orderID, Date ordertime, double total, User user,
-			Address address, int state) {
+			Address address, int state, Set<OrderItem> orderItemSet) {
 		super();
 		this.orderID = orderID;
 		this.ordertime = ordertime;
@@ -68,6 +80,14 @@ public class Order {
 		this.user = user;
 		this.address = address;
 		this.state = state;
+		this.orderItemSet = orderItemSet;
+	}
+	@Override
+	public String toString() {
+		return "Order [orderID=" + orderID + ", ordertime=" + ordertime
+				+ ", total=" + total + ", user=" + user + ", address="
+				+ address + ", state=" + state + ", orderItemSet="
+				+ orderItemSet + "]";
 	}
 	public Order() {
 		super();
