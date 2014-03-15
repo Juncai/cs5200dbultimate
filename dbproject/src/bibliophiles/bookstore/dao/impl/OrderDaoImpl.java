@@ -1,19 +1,30 @@
 package bibliophiles.bookstore.dao.impl;
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.enterprise.inject.New;
 
 import jon.jdbc.utils.JdbcUtils;
+import jon.utils.CommonUtils;
 
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.MapListHandler;
 
 import bibliophiles.bookstore.dao.OrderDao;
+import bibliophiles.bookstore.domain.Author;
+import bibliophiles.bookstore.domain.Book;
+import bibliophiles.bookstore.domain.Category;
 import bibliophiles.bookstore.domain.Order;
+import bibliophiles.bookstore.domain.OrderItem;
+import bibliophiles.bookstore.domain.Publisher;
 
 public class OrderDaoImpl implements OrderDao {
 	QueryRunner qr = new QueryRunner(JdbcUtils.getDataSource());
@@ -29,11 +40,26 @@ public class OrderDaoImpl implements OrderDao {
 	}
 
 	public List<Order> findAll() {
-		String sql = "SELECT * FROM order o,orderItem i WHERE o.orderID=i.orderID";
-		
 		try {
-			List<Order> orderList = new ArrayList<Order>();
-			List<Map<String, Object>> mapList = qr.query(sql, new MapListHandler());
+			String sql = "SELECT * FROM order ORDER BY ordertime DESC";
+			List<Order> orderList = qr.query(sql, new BeanListHandler<Order>(
+					Order.class));
+			
+			sql = "SELECT * FROM order o,orderItem i,book b WHERE i.isbn=b.isbn AND i.orderID=?";
+			for (Order order : orderList) {
+				
+				List<Map<String, Object>> mapList = qr.query(sql,
+						new MapListHandler(),
+						order.getOrderID());
+				for (Map<String, Object> map : mapList) {
+					OrderItem orderItem = CommonUtils.toBean(map, OrderItem.class);
+					Book book = CommonUtils.toBean(map, Book.class);
+					orderItem.setBook(book);
+					orderItem.setOrder(order);
+					order.addOrderItem(orderItem);
+				}
+			}
+			return orderList;
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -41,23 +67,99 @@ public class OrderDaoImpl implements OrderDao {
 	}
 
 	public List<Order> findByState(int state) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			String sql = "SELECT * FROM order WHERE state=? ORDER BY ordertime DESC";
+			List<Order> orderList = qr.query(sql, new BeanListHandler<Order>(
+					Order.class), state);
+			
+			sql = "SELECT * FROM order o,orderItem i,book b WHERE i.isbn=b.isbn AND i.orderID=?";
+			for (Order order : orderList) {
+				
+				List<Map<String, Object>> mapList = qr.query(sql,
+						new MapListHandler(),
+						order.getOrderID());
+				for (Map<String, Object> map : mapList) {
+					OrderItem orderItem = CommonUtils.toBean(map, OrderItem.class);
+					Book book = CommonUtils.toBean(map, Book.class);
+					orderItem.setBook(book);
+					orderItem.setOrder(order);
+					order.addOrderItem(orderItem);
+				}
+			}
+			return orderList;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	public Order findByOrderID(String orderID) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		try {
+			String sql = "SELECT * FROM order WHERE orderID=?";
+			Order order = qr.query(sql, new BeanHandler<Order>(Order.class), orderID);
+			
+			sql = "SELECT * FROM orderItem i,book b WHERE i.isbn=b.isbn AND orderID=?";
+			
+			List<Map<String, Object>> mapList = qr.query(sql,
+					new MapListHandler(), order.getOrderID());
+			for (Map<String, Object> map : mapList) {
+				OrderItem orderItem = CommonUtils.toBean(map, OrderItem.class);
+				Book book = CommonUtils.toBean(map, Book.class);
+				orderItem.setBook(book);
+				orderItem.setOrder(order);
+				order.addOrderItem(orderItem);
+			}
+			return order;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
 	}
 
-	public List<Order> findByUserID(String uiserID) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Order> findByUserID(String userID) {
+		try {
+			String sql = "SELECT * FROM order WHERE userID=? ORDER BY ordertime DESC";
+			List<Order> orderList = qr.query(sql, new BeanListHandler<Order>(
+					Order.class), userID);
+			
+			sql = "SELECT * FROM order o,orderItem i,book b WHERE i.isbn=b.isbn AND i.orderID=?";
+			for (Order order : orderList) {
+				
+				List<Map<String, Object>> mapList = qr.query(sql,
+						new MapListHandler(),
+						order.getOrderID());
+				for (Map<String, Object> map : mapList) {
+					OrderItem orderItem = CommonUtils.toBean(map, OrderItem.class);
+					Book book = CommonUtils.toBean(map, Book.class);
+					orderItem.setBook(book);
+					orderItem.setOrder(order);
+					order.addOrderItem(orderItem);
+				}
+			}
+			return orderList;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	public void add(Order order) {
-		// TODO Auto-generated method stub
-
+		try {
+			String sql = "INSERT INTO order (orderID,ordertime,total,userID,state) VALUES(?,?,?,?,?)";
+			Timestamp ts = new Timestamp(order.getOrdertime().getTime());
+			qr.update(sql,order.getOrderID(), ts, order.getTotal(), order.getUser().getUserID(), order.getState());
+			sql = "INSERT INTO orderItem VALUES(?,?,?,?)";
+			Set<OrderItem> itemSet = order.getOrderItemSet();
+			Object[][] params = new Object[order.getOrderItemSet().size()][4];
+			int i = 0;
+			for (OrderItem orderItem : itemSet) {
+				params[i++] = new Object[] {orderItem.getCount(), orderItem.getSubtotal(),
+						orderItem.getBook().getIsbn(), orderItem.getOrder()
+						.getOrderID()};
+			}
+			qr.batch(sql, params);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 }

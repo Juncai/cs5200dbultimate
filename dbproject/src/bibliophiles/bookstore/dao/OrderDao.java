@@ -9,7 +9,7 @@ public interface OrderDao {
 	public List<Order> findAll();
 	public List<Order> findByState(int state);
 	public Order findByOrderID(String orderID);
-	public List<Order> findByUserID(String uiserID);
+	public List<Order> findByUserID(String userID);
 	public void add(Order order);
 	
 	
