@@ -228,4 +228,64 @@ public class BookDaoImpl implements BookDao {
 		}
 	}
 
+	public List<Book> findList(Map<String, String> conditions) {
+		
+		String sql = "SELECT * FROM book b,publisher p,category c,author a,"
+				+ "bookauthor ba WHERE b.isbn=ba.isbn AND ba.authorID=a.authorID "
+				+ "AND b.categoryID=c.categoryID AND b.publisherID=p.publisherID "
+				+ "AND isdel=FALSE";
+		StringBuffer sb = new StringBuffer(sql);
+		
+		for (String condition : conditions.keySet()) {
+			sb.append("," + condition + "=" + conditions.get(condition));
+		}
+		
+		try {
+			List<Book> bookList = new ArrayList<Book>();
+			List<Map<String, Object>> mapList = qr.query(sql,
+					new MapListHandler());
+			if (mapList.size() > 0) {
+				Map<String, Object> map0 = mapList.remove(0);
+				Book book = CommonUtils.toBean(map0, Book.class);
+				String oldISBN = book.getIsbn();
+				String newISBN;
+				Publisher publisher = CommonUtils.toBean(map0, Publisher.class);
+				Category category = CommonUtils.toBean(map0, Category.class);
+				List<Author> authorList = new ArrayList<Author>();
+				Author author = CommonUtils.toBean(map0, Author.class);
+				authorList.add(author);
+				book.setPublisher(publisher);
+				book.setCategory(category);
+				
+				for (Map<String, Object> map : mapList) {
+					newISBN = (String) map.get("isbn");
+					if (!oldISBN.equals(newISBN)) {
+						book.setAuthors(authorList);
+						bookList.add(book);	// add the previous book
+						
+						book = CommonUtils.toBean(map, Book.class);
+						publisher = CommonUtils.toBean(map, Publisher.class);
+						category = CommonUtils.toBean(map, Category.class);
+						book.setPublisher(publisher);
+						book.setCategory(category);
+						authorList = new ArrayList<Author>();
+						oldISBN = newISBN;
+					}
+					authorList.add(CommonUtils.toBean(map, Author.class));
+				}
+				book.setAuthors(authorList);
+				bookList.add(book);	// add the last book
+			}
+			
+			return bookList;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	public Book findBook(String field, String value) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
