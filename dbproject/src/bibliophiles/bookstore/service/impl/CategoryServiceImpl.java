@@ -6,6 +6,7 @@ import bibliophiles.bookstore.dao.CategoryDao;
 import bibliophiles.bookstore.dao.impl.CategoryDaoImpl;
 import bibliophiles.bookstore.domain.Category;
 import bibliophiles.bookstore.service.CategoryService;
+import bibliophiles.bookstore.service.exception.CategoryException;
 
 public class CategoryServiceImpl implements CategoryService {
 	private CategoryDao categoryDao = new CategoryDaoImpl();
@@ -14,7 +15,11 @@ public class CategoryServiceImpl implements CategoryService {
 		return categoryDao.all();
 	}
 
-	public void add(Category category) {
+	public void add(Category category) throws CategoryException{
+		Category _category = categoryDao.findByCategory(category.getCategoryname());
+		if (_category != null) {
+			throw new CategoryException("The category already exists.");
+		}
 		categoryDao.add(category);
 	}
 
@@ -22,7 +27,11 @@ public class CategoryServiceImpl implements CategoryService {
 		categoryDao.mod(category);
 	}
 
-	public void del(String categoryID) {
+	public void del(String categoryID) throws CategoryException{
+		int count = categoryDao.count(categoryID);
+		if (count > 0) {
+			throw new CategoryException("Can't finish deletion. There are books under this category.");
+		}
 		categoryDao.del(categoryID);
 	}
 

@@ -29,6 +29,51 @@
     <servlet-name>CartServlet</servlet-name>
     <servlet-class>bibliophiles.bookstore.servlet.CartServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>OrderServlet</servlet-name>
+    <servlet-class>bibliophiles.bookstore.servlet.OrderServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AdminServlet</servlet-name>
+    <servlet-class>bibliophiles.bookstore.admin.servlet.AdminServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AdminOrderServlet</servlet-name>
+    <servlet-class>bibliophiles.bookstore.admin.servlet.AdminOrderServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AdminIndexServlet</servlet-name>
+    <servlet-class>bibliophiles.bookstore.admin.servlet.AdminIndexServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AdminCategoryServlet</servlet-name>
+    <servlet-class>bibliophiles.bookstore.admin.servlet.AdminCategoryServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AdminBookServlet</servlet-name>
+    <servlet-class>bibliophiles.bookstore.admin.servlet.AdminBookServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AdminAddBookServlet</servlet-name>
+    <servlet-class>bibliophiles.bookstore.admin.servlet.AdminAddBookServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ReviewServlet</servlet-name>
+    <servlet-class>bibliophiles.bookstore.servlet.ReviewServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>OrderItemServlet</servlet-name>
+    <servlet-class>bibliophiles.bookstore.servlet.OrderItemServlet</servlet-class>
+  </servlet>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -53,6 +98,42 @@
   <servlet-mapping>
     <servlet-name>CartServlet</servlet-name>
     <url-pattern>/cart/CartServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>OrderServlet</servlet-name>
+    <url-pattern>/order/OrderServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdminServlet</servlet-name>
+    <url-pattern>/AdminServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdminOrderServlet</servlet-name>
+    <url-pattern>/admin/AdminOrderServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdminIndexServlet</servlet-name>
+    <url-pattern>/admin/AdminIndexServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdminCategoryServlet</servlet-name>
+    <url-pattern>/admin/AdminCategoryServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdminBookServlet</servlet-name>
+    <url-pattern>/admin/AdminBookServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdminAddBookServlet</servlet-name>
+    <url-pattern>/admin/AdminAddBookServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ReviewServlet</servlet-name>
+    <url-pattern>/ReviewServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>OrderItemServlet</servlet-name>
+    <url-pattern>/OrderItemServlet</url-pattern>
   </servlet-mapping>
 
 </web-app>

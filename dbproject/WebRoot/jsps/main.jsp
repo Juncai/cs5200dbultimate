@@ -1,8 +1,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="pragma" content="no-cache">
@@ -18,6 +18,12 @@
 #nav {
 	
 }
+.table {
+	width: 1024px;
+	height: 100%;
+	border: 1px solid gray;
+	border-collapse: collapse;
+}
 
 iframe {
 	width: 100%;
@@ -27,7 +33,7 @@ iframe {
 </head>
 
 <body>
-	<table width="1024" height="100%" align="center">
+	<table class="table" align="center">
 		<tr style="background: #4682B4; height: 120px; ">
 			<td colspan="2" align="center"><iframe frameborder="0"
 					src="<c:url value='/IndexServlet?method=top' />" name="top"></iframe></td>

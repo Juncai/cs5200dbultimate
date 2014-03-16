@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -18,12 +19,13 @@
 <style type="text/css">
 	body {
 		font-size: 10pt;
+		background: rgb(254,238,189);
 	}
 	.icon {
 		margin:10px;
 		border: solid 2px gray;
 		width: 160px;
-		height: 180px;
+		height: 190px;
 		text-align: center;
 		float: left;
 	}
@@ -31,15 +33,16 @@
   </head>
   
   <body>
-  <c:forEach items="${list }" var="book"> 
-  <div class="icon">
-  	<%--book_img/9317290-1_l.jpg --%>
-  	<%-- <a href="<c:url value='/BookServlet?method=load&isbn=${book.isbn }'/>"><img src="/onlinebookstore/book_img/9317290-1_l.jpg"/></a> --%>
-    <a href="<c:url value='/BookServlet?method=load&isbn=${book.isbn }'/>"><img src="<c:url value='/${book.cover }'/>"/></a>
+<c:forEach items="${bookList }" var="book">
+   <div class="icon">
+    <a href="<c:url value='/admin/AdminBookServlet?method=desc&isbn=${book.isbn }'/>"><img src="<c:url value='/${book.cover }'/>" border="0"/></a>
       <br/>
-   	<a href="<c:url value='/BookServlet?method=load&isbn=${book.isbn }'/>">${book.title }</a>
+   	<a href="<c:url value='/admin/AdminBookServlet?method=desc&isbn=${book.isbn }'/>">${book.title }</a>
   </div>
 </c:forEach>
+
+  
   </body>
  
 </html>
+

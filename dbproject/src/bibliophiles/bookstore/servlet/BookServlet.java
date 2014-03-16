@@ -10,12 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import bibliophiles.bookstore.dao.impl.BookDaoImpl;
 import bibliophiles.bookstore.domain.Book;
+import bibliophiles.bookstore.domain.OrderItem;
 import bibliophiles.bookstore.service.BookService;
+import bibliophiles.bookstore.service.OrderItemService;
 import bibliophiles.bookstore.service.impl.BookServiceImpl;
+import bibliophiles.bookstore.service.impl.OrderItemServiceImpl;
 import jon.servlet.BaseServlet;
 
 public class BookServlet extends BaseServlet {
 	private BookService bookService = new BookServiceImpl();
+	private OrderItemService orderItemService = new OrderItemServiceImpl();
 	
 	public String all(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -34,7 +38,9 @@ public class BookServlet extends BaseServlet {
 	public String load(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Book book = bookService.findByIsbn(request.getParameter("isbn")); 
+		List<OrderItem> orderItems = orderItemService.findByIsbn(request.getParameter("isbn"));
 		request.setAttribute("book", book);
+		request.setAttribute("orderItems", orderItems);
 		return "/jsps/bookdesc.jsp";
 	}
 }

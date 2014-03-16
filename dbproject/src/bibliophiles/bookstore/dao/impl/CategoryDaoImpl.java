@@ -38,7 +38,7 @@ public class CategoryDaoImpl implements CategoryDao {
 	}
 
 	public void mod(Category category) {
-		String sql = "UPDATE category SET category=? WHERE categoryID=?";
+		String sql = "UPDATE category SET categoryname=? WHERE categoryID=?";
 		try {
 			qr.update(sql, category.getCategoryname(), category.getCategoryID());
 		} catch (SQLException e) {
@@ -66,7 +66,7 @@ public class CategoryDaoImpl implements CategoryDao {
 	}
 
 	public Category findByCategory(String category) {
-		String sql = "SELECT * FROM category WHERE category=?";
+		String sql = "SELECT * FROM category WHERE categoryname=?";
 		try {
 			return qr.query(sql, new BeanHandler<Category>(Category.class), category);
 		} catch (SQLException e) {

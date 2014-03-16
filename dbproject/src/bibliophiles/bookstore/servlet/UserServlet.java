@@ -32,7 +32,7 @@ public class UserServlet extends BaseServlet {
 			throws ServletException, IOException {
 		final User user = CommonUtils.toBean(request.getParameterMap(), User.class);
 		user.setUserID(CommonUtils.uuid());
-		user.setState(false);
+		user.setState(true);
 		user.setCode(CommonUtils.uuid() + CommonUtils.uuid());
 		
 		try {
@@ -104,6 +104,25 @@ public class UserServlet extends BaseServlet {
 		
 		List<String> links = new ArrayList<String>();
 		links.add("<a href='" + request.getContextPath() + "/index.jsp'>Main page</a>");
+		request.setAttribute("links", links);
+		return "/jsps/msg.jsp";
+	}
+	
+	public String quit(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.getSession().removeAttribute("cart");
+		User user = (User) request.getSession().getAttribute("user");
+		String msg = "";
+		if (user == null) {
+			msg = "You haven't signed in yet.";
+		} else {
+			msg = "Log out successfully!";
+			request.getSession().removeAttribute("user");			
+		}
+		request.setAttribute("msg", msg);
+		List<String> links = new ArrayList<String>();
+		links.add("<a href='" + request.getContextPath() + "/index.jsp'>Main page</a>");
+		links.add("<a href='" + request.getContextPath() + "/jsps/login.jsp'>Sign in</a>");
 		request.setAttribute("links", links);
 		return "/jsps/msg.jsp";
 	}

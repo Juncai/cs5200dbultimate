@@ -44,13 +44,13 @@ div {
 			<c:when test="${empty sessionScope.user }">
 			<a href="<c:url value='/UserServlet?method=loginPre'/>"
 			target="_parent">Login</a> &nbsp;|&nbsp; 
-			<a href="<c:url value='/UserServlet?method=registPre'/>" target="_parent">Regist </a> 
+			<a href="<c:url value='/UserServlet?method=registPre'/>" target="_parent">Sign up </a> 
 			</c:when>
 			<c:otherwise>
 			Hello, ${sessionScope.user.firstname }!&nbsp;&nbsp;|&nbsp;&nbsp; 
-			<a href="#">Shopping Cart</a>&nbsp;&nbsp;|&nbsp;&nbsp; 
-			<a href="#">My Order</a>&nbsp;&nbsp;|&nbsp;&nbsp; 
-			<a href="#">Exit</a>
+			<a href="<c:url value='/cart/CartServlet?method=showCart' />" target="body">Shopping Cart</a>&nbsp;&nbsp;|&nbsp;&nbsp; 
+			<a href="<c:url value='/order/OrderServlet?method=myOrders' />" target="body">My Order</a>&nbsp;&nbsp;|&nbsp;&nbsp; 
+			<a href="<c:url value='UserServlet?method=quit' />" target="_parent">Exit</a>
 			</c:otherwise>
 		</c:choose>
 	</div>

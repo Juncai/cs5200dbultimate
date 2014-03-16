@@ -10,7 +10,6 @@ import org.junit.Test;
 
 import bibliophiles.bookstore.dao.BookDao;
 import bibliophiles.bookstore.dao.impl.BookDaoImpl;
-import bibliophiles.bookstore.domain.Author;
 import bibliophiles.bookstore.domain.Book;
 
 public class BookDaoImplTest {
