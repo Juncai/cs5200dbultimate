@@ -14,8 +14,8 @@ import bibliophiles.bookstore.service.BookService;
 import bibliophiles.bookstore.service.CategoryService;
 import bibliophiles.bookstore.service.impl.BookServiceImpl;
 import bibliophiles.bookstore.service.impl.CategoryServiceImpl;
-import jon.servlet.BaseServlet;
-import jon.utils.CommonUtils;
+import bibliophiles.servlet.BaseServlet;
+import bibliophiles.utils.CommonUtils;
 
 public class AdminBookServlet extends BaseServlet {
 	private BookService bookService = new BookServiceImpl();

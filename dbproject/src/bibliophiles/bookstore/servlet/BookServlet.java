@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONArray;
 import bibliophiles.bookstore.dao.impl.BookDaoImpl;
 import bibliophiles.bookstore.domain.Book;
 import bibliophiles.bookstore.domain.OrderItem;
@@ -15,7 +16,7 @@ import bibliophiles.bookstore.service.BookService;
 import bibliophiles.bookstore.service.OrderItemService;
 import bibliophiles.bookstore.service.impl.BookServiceImpl;
 import bibliophiles.bookstore.service.impl.OrderItemServiceImpl;
-import jon.servlet.BaseServlet;
+import bibliophiles.servlet.BaseServlet;
 
 public class BookServlet extends BaseServlet {
 	private BookService bookService = new BookServiceImpl();
@@ -24,7 +25,9 @@ public class BookServlet extends BaseServlet {
 	public String all(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		List<Book> bookList = bookService.all(); 
+		JSONArray jsonList = JSONArray.fromObject(bookList);
 		request.setAttribute("list", bookList);
+		request.setAttribute("jsonList", jsonList.toString());
 		return "/jsps/booklist.jsp";
 	}
 	

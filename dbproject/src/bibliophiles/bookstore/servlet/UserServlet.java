@@ -14,10 +14,9 @@ import bibliophiles.bookstore.domain.User;
 import bibliophiles.bookstore.service.UserService;
 import bibliophiles.bookstore.service.exception.UserException;
 import bibliophiles.bookstore.service.impl.UserServiceImpl;
-import jon.mail.Mail;
-import jon.mail.MailUtils;
-import jon.servlet.BaseServlet;
-import jon.utils.CommonUtils;
+import bibliophiles.servlet.BaseServlet;
+import bibliophiles.utils.CommonUtils;
+
 
 public class UserServlet extends BaseServlet {
 	private UserService userService = new UserServiceImpl();
@@ -44,27 +43,28 @@ public class UserServlet extends BaseServlet {
 			return "/jsps/regist.jsp";
 		}
 		
-		final String url = "http://localhost:8080/bookstore/UserServlet?method=active&code="
-				+ user.getCode();
+//		final String url = "http://localhost:8080/bookstore/UserServlet?method=active&code="
+//				+ user.getCode();
+//		
+//		new Thread() {
+//			public void run() {
+//				Mail mail = new Mail();
+//				mail.setFrom("joncai2012@163.com");
+//				mail.addToAddress(user.getEmail());
+//				mail.setSubject("Activation mail from Bibliophiles online book store!");
+//				mail.setContent("Please click <a href='" + url + "'>here</a> to complete the activation.");
+//				
+//				Session session = MailUtils.createSession("smtp.163.com", "joncai2012@163.com", ";lkj0987");
+//				try {
+//					MailUtils.send(session, mail);
+//				} catch (Exception e) {
+//					throw new RuntimeException(e);
+//				}
+//			}
+//		}.start();
 		
-		new Thread() {
-			public void run() {
-				Mail mail = new Mail();
-				mail.setFrom("joncai2012@163.com");
-				mail.addToAddress(user.getEmail());
-				mail.setSubject("Activation mail from Bibliophiles online book store!");
-				mail.setContent("Please click <a href='" + url + "'>here</a> to complete the activation.");
-				
-				Session session = MailUtils.createSession("smtp.163.com", "joncai2012@163.com", ";lkj0987");
-				try {
-					MailUtils.send(session, mail);
-				} catch (Exception e) {
-					throw new RuntimeException(e);
-				}
-			}
-		}.start();
-		
-		request.setAttribute("msg", "Signup success. An activation mail has been sent to your mailbox.");
+//		request.setAttribute("msg", "Signup success. An activation mail has been sent to your mailbox.");
+		request.setAttribute("msg", "Signup success.");
 		List<String> links = new ArrayList<String>();
 		links.add("<a href='" + request.getContextPath() + "/index.jsp'>Main page</a>");
 		links.add("<a href='" + request.getContextPath() + "/jsps/login.jsp'>Login</a>");

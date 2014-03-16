@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bibliophiles.bookstore.admin.service.impl.AdministratorServiceImpl;
-import jon.servlet.BaseServlet;
+import bibliophiles.servlet.BaseServlet;
 
 public class AdminIndexServlet extends BaseServlet {
 

@@ -11,8 +11,8 @@ import bibliophiles.bookstore.domain.Category;
 import bibliophiles.bookstore.service.CategoryService;
 import bibliophiles.bookstore.service.exception.CategoryException;
 import bibliophiles.bookstore.service.impl.CategoryServiceImpl;
-import jon.servlet.BaseServlet;
-import jon.utils.CommonUtils;
+import bibliophiles.servlet.BaseServlet;
+import bibliophiles.utils.CommonUtils;
 
 public class AdminCategoryServlet extends BaseServlet {
 	private CategoryService categoryService = new CategoryServiceImpl();

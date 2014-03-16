@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import bibliophiles.bookstore.admin.domain.Administrator;
 import bibliophiles.bookstore.admin.service.AdministratorService;
 import bibliophiles.bookstore.admin.service.impl.AdministratorServiceImpl;
-import jon.servlet.BaseServlet;
+import bibliophiles.servlet.BaseServlet;
 
 public class AdminServlet extends BaseServlet {
 	private AdministratorService adminService = new AdministratorServiceImpl();

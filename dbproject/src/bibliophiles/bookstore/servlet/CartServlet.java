@@ -13,7 +13,7 @@ import bibliophiles.bookstore.domain.Cart;
 import bibliophiles.bookstore.domain.CartItem;
 import bibliophiles.bookstore.service.BookService;
 import bibliophiles.bookstore.service.impl.BookServiceImpl;
-import jon.servlet.BaseServlet;
+import bibliophiles.servlet.BaseServlet;
 
 public class CartServlet extends BaseServlet {
 	private BookService bookServie = new BookServiceImpl();

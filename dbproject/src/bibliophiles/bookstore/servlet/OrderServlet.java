@@ -16,8 +16,8 @@ import bibliophiles.bookstore.domain.OrderItem;
 import bibliophiles.bookstore.domain.User;
 import bibliophiles.bookstore.service.OrderService;
 import bibliophiles.bookstore.service.impl.OrderServiceImpl;
-import jon.servlet.BaseServlet;
-import jon.utils.CommonUtils;
+import bibliophiles.servlet.BaseServlet;
+import bibliophiles.utils.CommonUtils;
 
 public class OrderServlet extends BaseServlet {
 	private OrderService orderService = new OrderServiceImpl();

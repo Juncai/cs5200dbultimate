@@ -8,13 +8,13 @@ import java.util.Map;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.MapListHandler;
 
-import jon.jdbc.utils.JdbcUtils;
-import jon.utils.CommonUtils;
 import bibliophiles.bookstore.dao.BookDao;
 import bibliophiles.bookstore.domain.Author;
 import bibliophiles.bookstore.domain.Book;
 import bibliophiles.bookstore.domain.Category;
 import bibliophiles.bookstore.domain.Publisher;
+import bibliophiles.jdbc.utils.JdbcUtils;
+import bibliophiles.utils.CommonUtils;
 
 public class BookDaoImpl implements BookDao {
 

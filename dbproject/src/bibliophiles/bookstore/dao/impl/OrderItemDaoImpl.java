@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
-import jon.jdbc.utils.JdbcUtils;
+
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
@@ -13,6 +13,7 @@ import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import bibliophiles.bookstore.dao.OrderItemDao;
 import bibliophiles.bookstore.domain.OrderItem;
+import bibliophiles.jdbc.utils.JdbcUtils;
 
 public class OrderItemDaoImpl implements OrderItemDao {
 	private QueryRunner qr = new QueryRunner(JdbcUtils.getDataSource());

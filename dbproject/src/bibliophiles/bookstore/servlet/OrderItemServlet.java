@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import bibliophiles.bookstore.domain.OrderItem;
 import bibliophiles.bookstore.service.OrderItemService;
 import bibliophiles.bookstore.service.impl.OrderItemServiceImpl;
-import jon.servlet.BaseServlet;
+import bibliophiles.servlet.BaseServlet;
 
 public class OrderItemServlet extends BaseServlet {
 	private OrderItemService orderItemService = new OrderItemServiceImpl();

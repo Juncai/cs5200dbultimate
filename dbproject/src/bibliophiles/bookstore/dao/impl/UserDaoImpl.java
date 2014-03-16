@@ -2,13 +2,12 @@ package bibliophiles.bookstore.dao.impl;
 
 import java.sql.SQLException;
 
-import jon.jdbc.utils.JdbcUtils;
-
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 
 import bibliophiles.bookstore.dao.UserDao;
 import bibliophiles.bookstore.domain.User;
+import bibliophiles.jdbc.utils.JdbcUtils;
 
 public class UserDaoImpl implements UserDao {
 	private QueryRunner qr = new QueryRunner(JdbcUtils.getDataSource());

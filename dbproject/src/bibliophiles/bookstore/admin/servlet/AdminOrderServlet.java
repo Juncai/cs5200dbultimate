@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import bibliophiles.bookstore.domain.Order;
 import bibliophiles.bookstore.service.OrderService;
 import bibliophiles.bookstore.service.impl.OrderServiceImpl;
-import jon.servlet.BaseServlet;
+import bibliophiles.servlet.BaseServlet;
 
 public class AdminOrderServlet extends BaseServlet {
 	private OrderService orderService = new OrderServiceImpl();

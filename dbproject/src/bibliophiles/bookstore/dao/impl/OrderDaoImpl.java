@@ -6,9 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import jon.jdbc.utils.JdbcUtils;
-import jon.utils.CommonUtils;
-
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
@@ -18,6 +15,8 @@ import bibliophiles.bookstore.dao.OrderDao;
 import bibliophiles.bookstore.domain.Book;
 import bibliophiles.bookstore.domain.Order;
 import bibliophiles.bookstore.domain.OrderItem;
+import bibliophiles.jdbc.utils.JdbcUtils;
+import bibliophiles.utils.CommonUtils;
 
 public class OrderDaoImpl implements OrderDao {
 	QueryRunner qr = new QueryRunner(JdbcUtils.getDataSource());

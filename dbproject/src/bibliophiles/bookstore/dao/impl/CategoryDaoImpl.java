@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import jon.jdbc.utils.JdbcUtils;
-
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
@@ -15,6 +13,7 @@ import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import bibliophiles.bookstore.dao.CategoryDao;
 import bibliophiles.bookstore.domain.Category;
+import bibliophiles.jdbc.utils.JdbcUtils;
 
 public class CategoryDaoImpl implements CategoryDao {
 	QueryRunner qr = new QueryRunner(JdbcUtils.getDataSource());

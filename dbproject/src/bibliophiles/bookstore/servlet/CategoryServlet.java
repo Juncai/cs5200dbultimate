@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import bibliophiles.bookstore.domain.Category;
 import bibliophiles.bookstore.service.CategoryService;
 import bibliophiles.bookstore.service.impl.CategoryServiceImpl;
-import jon.servlet.BaseServlet;
+import bibliophiles.servlet.BaseServlet;
 
 public class CategoryServlet extends BaseServlet {
 	private CategoryService categoryService = new CategoryServiceImpl();
