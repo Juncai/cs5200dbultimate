@@ -25,7 +25,7 @@ public class JdbcUtils {
 
 		Connection con = connectionHolder.get();
 		if(con != null) {
-			throw new SQLException("已经存在了事务，不能再次开启！");
+			throw new SQLException("Cannot repeatly open a transaction!");
 		}
 
 		con = dataSource.getConnection();
@@ -39,7 +39,7 @@ public class JdbcUtils {
 		Connection con = connectionHolder.get();
 
 		if(con == null) {
-			throw new SQLException("没有事务可以提交！");
+			throw new SQLException("No transactions can be committed!");
 		}
 		con.commit();
 		con.close();
@@ -50,11 +50,11 @@ public class JdbcUtils {
 		Connection con = connectionHolder.get();
 
 		if(con == null) {
-			throw new SQLException("没有事务可以回滚！");
+			throw new SQLException("No transactions to be roll back!");
 		}
 		con.rollback();
 		con.close();
-		connectionHolder.remove();//从holder中移除连接对象
+		connectionHolder.remove();
 	}
 
 	public static DataSource getDataSource() {
@@ -82,7 +82,7 @@ public class JdbcUtils {
 			dataSource = (DataSource) clazz.newInstance();
 			BeanUtils.populate(dataSource, prop);
 		} catch (Exception e) {
-			throw new RuntimeException("dataSourceClassName找不到："
+			throw new RuntimeException("Cannot find dataSourceClassName: "
 					+ dataSourceClassName, e);
 		}
 	}
@@ -109,7 +109,7 @@ public class JdbcUtils {
 
 			initDataSource(prop);
 		} catch (Exception e) {
-			throw new RuntimeException("dbconfig.properties找不到：", e);
+			throw new RuntimeException("Cannot find dbconfig.properties: ", e);
 		}
 	}
 
