@@ -1,139 +1,168 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="3.0"
-    xmlns="http://java.sun.com/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
-  <servlet>
-    <servlet-name>IndexServlet</servlet-name>
-    <servlet-class>bibliophiles.bookstore.servlet.IndexServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>UserServlet</servlet-name>
-    <servlet-class>bibliophiles.bookstore.servlet.UserServlet</servlet-class>
-  </servlet>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+	<servlet>
+		<servlet-name>IndexServlet</servlet-name>
+		<servlet-class>bibliophiles.bookstore.servlet.IndexServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>UserServlet</servlet-name>
+		<servlet-class>bibliophiles.bookstore.servlet.UserServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>This is the description of my J2EE component</description>
+		<display-name>This is the display name of my J2EE component</display-name>
+		<servlet-name>BookServlet</servlet-name>
+		<servlet-class>bibliophiles.bookstore.servlet.BookServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>This is the description of my J2EE component</description>
+		<display-name>This is the display name of my J2EE component</display-name>
+		<servlet-name>CategoryServlet</servlet-name>
+		<servlet-class>bibliophiles.bookstore.servlet.CategoryServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>This is the description of my J2EE component</description>
+		<display-name>This is the display name of my J2EE component</display-name>
+		<servlet-name>CartServlet</servlet-name>
+		<servlet-class>bibliophiles.bookstore.servlet.CartServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>OrderServlet</servlet-name>
+		<servlet-class>bibliophiles.bookstore.servlet.OrderServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AdminServlet</servlet-name>
+		<servlet-class>bibliophiles.bookstore.admin.servlet.AdminServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AdminOrderServlet</servlet-name>
+		<servlet-class>bibliophiles.bookstore.admin.servlet.AdminOrderServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AdminIndexServlet</servlet-name>
+		<servlet-class>bibliophiles.bookstore.admin.servlet.AdminIndexServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AdminCategoryServlet</servlet-name>
+		<servlet-class>bibliophiles.bookstore.admin.servlet.AdminCategoryServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AdminBookServlet</servlet-name>
+		<servlet-class>bibliophiles.bookstore.admin.servlet.AdminBookServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AdminAddBookServlet</servlet-name>
+		<servlet-class>bibliophiles.bookstore.admin.servlet.AdminAddBookServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ReviewServlet</servlet-name>
+		<servlet-class>bibliophiles.bookstore.servlet.ReviewServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>OrderItemServlet</servlet-name>
+		<servlet-class>bibliophiles.bookstore.servlet.OrderItemServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>MobileUserServlet</servlet-name>
+		<servlet-class>bibliophiles.bookstore.mobile.servlet.MobileUserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MobileUserServlet</servlet-name>
+		<url-pattern>/MobileUserServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>MobileBookServlet</servlet-name>
+		<servlet-class>bibliophiles.bookstore.mobile.servlet.MobileBookServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>This is the description of my J2EE component</description>
+		<display-name>This is the display name of my J2EE component</display-name>
+		<servlet-name>MobileOrderServlet</servlet-name>
+		<servlet-class>bibliophiles.bookstore.mobile.servlet.MobileOrderServlet</servlet-class>
+	</servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
-    <servlet-name>BookServlet</servlet-name>
-    <servlet-class>bibliophiles.bookstore.servlet.BookServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <description>This is the description of my J2EE component</description>
-    <display-name>This is the display name of my J2EE component</display-name>
-    <servlet-name>CategoryServlet</servlet-name>
-    <servlet-class>bibliophiles.bookstore.servlet.CategoryServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <description>This is the description of my J2EE component</description>
-    <display-name>This is the display name of my J2EE component</display-name>
-    <servlet-name>CartServlet</servlet-name>
-    <servlet-class>bibliophiles.bookstore.servlet.CartServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>OrderServlet</servlet-name>
-    <servlet-class>bibliophiles.bookstore.servlet.OrderServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>AdminServlet</servlet-name>
-    <servlet-class>bibliophiles.bookstore.admin.servlet.AdminServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>AdminOrderServlet</servlet-name>
-    <servlet-class>bibliophiles.bookstore.admin.servlet.AdminOrderServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>AdminIndexServlet</servlet-name>
-    <servlet-class>bibliophiles.bookstore.admin.servlet.AdminIndexServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>AdminCategoryServlet</servlet-name>
-    <servlet-class>bibliophiles.bookstore.admin.servlet.AdminCategoryServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>AdminBookServlet</servlet-name>
-    <servlet-class>bibliophiles.bookstore.admin.servlet.AdminBookServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>AdminAddBookServlet</servlet-name>
-    <servlet-class>bibliophiles.bookstore.admin.servlet.AdminAddBookServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>ReviewServlet</servlet-name>
-    <servlet-class>bibliophiles.bookstore.servlet.ReviewServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>OrderItemServlet</servlet-name>
-    <servlet-class>bibliophiles.bookstore.servlet.OrderItemServlet</servlet-class>
+    <servlet-name>MobileDiscountInfoServlet</servlet-name>
+    <servlet-class>bibliophiles.bookstore.mobile.servlet.MobileDiscountInfoServlet</servlet-class>
   </servlet>
 
 
+	<servlet-mapping>
+		<servlet-name>MobileBookServlet</servlet-name>
+		<url-pattern>/MobileBookServlet</url-pattern>
+	</servlet-mapping>
 
 
 
 
-
-
-
-
-
-
-
-
+	<servlet-mapping>
+		<servlet-name>IndexServlet</servlet-name>
+		<url-pattern>/IndexServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UserServlet</servlet-name>
+		<url-pattern>/UserServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>BookServlet</servlet-name>
+		<url-pattern>/BookServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CategoryServlet</servlet-name>
+		<url-pattern>/CategoryServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CartServlet</servlet-name>
+		<url-pattern>/cart/CartServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderServlet</servlet-name>
+		<url-pattern>/order/OrderServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AdminServlet</servlet-name>
+		<url-pattern>/AdminServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AdminOrderServlet</servlet-name>
+		<url-pattern>/admin/AdminOrderServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AdminIndexServlet</servlet-name>
+		<url-pattern>/admin/AdminIndexServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AdminCategoryServlet</servlet-name>
+		<url-pattern>/admin/AdminCategoryServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AdminBookServlet</servlet-name>
+		<url-pattern>/admin/AdminBookServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AdminAddBookServlet</servlet-name>
+		<url-pattern>/admin/AdminAddBookServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ReviewServlet</servlet-name>
+		<url-pattern>/ReviewServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderItemServlet</servlet-name>
+		<url-pattern>/OrderItemServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>MobileOrderServlet</servlet-name>
+		<url-pattern>/MobileOrderServlet</url-pattern>
+	</servlet-mapping>
   <servlet-mapping>
-    <servlet-name>IndexServlet</servlet-name>
-    <url-pattern>/IndexServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>UserServlet</servlet-name>
-    <url-pattern>/UserServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>BookServlet</servlet-name>
-    <url-pattern>/BookServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>CategoryServlet</servlet-name>
-    <url-pattern>/CategoryServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>CartServlet</servlet-name>
-    <url-pattern>/cart/CartServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>OrderServlet</servlet-name>
-    <url-pattern>/order/OrderServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>AdminServlet</servlet-name>
-    <url-pattern>/AdminServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>AdminOrderServlet</servlet-name>
-    <url-pattern>/admin/AdminOrderServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>AdminIndexServlet</servlet-name>
-    <url-pattern>/admin/AdminIndexServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>AdminCategoryServlet</servlet-name>
-    <url-pattern>/admin/AdminCategoryServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>AdminBookServlet</servlet-name>
-    <url-pattern>/admin/AdminBookServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>AdminAddBookServlet</servlet-name>
-    <url-pattern>/admin/AdminAddBookServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>ReviewServlet</servlet-name>
-    <url-pattern>/ReviewServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>OrderItemServlet</servlet-name>
-    <url-pattern>/OrderItemServlet</url-pattern>
+    <servlet-name>MobileDiscountInfoServlet</servlet-name>
+    <url-pattern>/MobileDiscountInfoServlet</url-pattern>
   </servlet-mapping>
 
 </web-app>
