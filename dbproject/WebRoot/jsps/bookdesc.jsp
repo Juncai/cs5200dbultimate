@@ -29,24 +29,8 @@
 	li {
 		margin: 10px;
 	}
-	a {
-		background: url(<c:url value='/images/all.png'/>) no-repeat;
-		display: inline-block;
-		
-		background-position: 0 -70px;
-		margin-left: 30px;
-		height: 36px;
-		width: 146px;
-	}
-	a:HOVER {
-		background: url(<c:url value='/images/all.png'/>) no-repeat;
-		display: inline-block;
-		
-		background-position: 0 -106px;
-		margin-left: 30px;
-		height: 36px;
-		width: 146px;
-	}
+
+
 </style>
   </head>
   
@@ -64,6 +48,6 @@
   	<input type="hidden" name="isbn" value="${book.isbn }"/>
   	<input type="text" size="3" name="count" value="1"/>
   </form>
-  <a href="javascript:document.getElementById('form').submit();"></a>
+  <a href="javascript:document.getElementById('form').submit();">Buy</a>
   </body>
 </html>

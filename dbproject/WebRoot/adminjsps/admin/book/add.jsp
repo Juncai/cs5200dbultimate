@@ -21,7 +21,7 @@
   </head>
   
   <body>
-    <h1>添加图书</h1>
+    <h1>Add Book</h1>
     <p style="font-weight: 900; color: red">${msg }</p>
     <form action="<c:url value='/admin/AdminAddBookServlet'/>" method="post" enctype="multipart/form-data">
     	ISBN:   <input style="width: 150px; height: 20px;" type="text" name="isbn"/><br/>

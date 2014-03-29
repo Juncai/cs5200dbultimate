@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import bibliophiles.bookstore.domain.User;
 
-@WebFilter({ "/cart/*", "/jsps/cart/*" })
+@WebFilter({ "/cart/*", "/jsps/cart/*", "/order/*", "/jsps/order/*" })
 public class LoginFilter implements Filter {
 	public LoginFilter() {}
 	public void destroy() {}

@@ -21,7 +21,7 @@
   </head>
   
   <body>
-    <h1>添加分类</h1>
+    <h1>Add Category</h1>
     <p style="font-weight: 900; color: red">${msg }</p>
     <form action="<c:url value='/admin/AdminCategoryServlet'/>" method="post">
     	<input type="hidden" name="method" value="add"/>
