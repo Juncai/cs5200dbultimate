@@ -5,6 +5,8 @@
 <html>
   <head>
     <title>My JSP 'bookdesc.jsp' starting page</title>
+        <!-- Bootstrap core CSS -->
+    <link href="./css/bootstrap.css" rel="stylesheet">
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -15,9 +17,54 @@
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	
+	<script type="text/javascript">
+function iframeAutoFit()
+{
+    
+    try
+    {
+        if(window!=parent)
+        {
+            var a = parent.document.getElementsByTagName("IFRAME");
+            for(var i=0; i<a.length; i++) //author:meizz
+            {
+                if(a[i].contentWindow==window)
+                {
+                    var h1=0, h2=0;
+                    if(document.documentElement&&document.documentElement.scrollHeight)
+                    {
+                        h1=document.documentElement.scrollHeight;
+                    }
+                    if(document.body) h2=document.body.scrollHeight;
+                    var h=Math.max(h1, h2);
+                    if(document.all) {h += 0;}
+                    if(window.opera) {h += 1;}
+                    a[i].style.height = h +"px";
+                }
+            }
+        }
+    }
+    catch (ex){}
+}
+if(document.attachEvent)
+{
+    window.attachEvent("onload",  iframeAutoFit);
+    window.attachEvent("onresize",  iframeAutoFit);
+}
+else
+{
+    window.addEventListener('load',  iframeAutoFit,  false);
+    window.addEventListener('resize',  iframeAutoFit,  false);
+}
+</script> 
+
+
+	
 <style type="text/css">
 	body {
 		font-size: 10pt;
+		background-color: #f7f7f9;
 	}
 	.icon {
 		margin:10px;
@@ -28,18 +75,39 @@
 		float: left;
 	}
 </style>
+
   </head>
   
   <body>
   <c:forEach items="${list }" var="book"> 
-  <div class="icon">
-  	<%--book_img/9317290-1_l.jpg --%>
-  	<%-- <a href="<c:url value='/BookServlet?method=load&isbn=${book.isbn }'/>"><img src="/onlinebookstore/book_img/9317290-1_l.jpg"/></a> --%>
-    <a href="<c:url value='/BookServlet?method=load&isbn=${book.isbn }'/>"><img src="<c:url value='/${book.cover }'/>"/></a>
-      <br/>
-   	<a href="<c:url value='/BookServlet?method=load&isbn=${book.isbn }'/>">${book.title }</a>
-  </div>
+   <div class="col-sm-4 col-lg-4 col-md-4 col-xs-4">
+                        <div class="thumbnail">
+                            <img src="<c:url value='/${book.cover }'/>" />
+                            <div class="caption">
+                                <h4 class="pull-right">$ ${book.price }</h4>
+                                <h5> 	<a href="<c:url value='/BookServlet?method=load&isbn=${book.isbn }'/>">${book.title }</a>
+                                </h5>
+                                <p>See more books like this online store item at.</p>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right">15 reviews</p>
+                                <p>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div> 
+
 </c:forEach>
+
+    <!-- JavaScript -->
+    <script src="./js/jquery-2.1.0.js"></script>
+    <script src="./js/bootstrap.js"></script>
+
   </body>
  
 </html>

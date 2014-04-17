@@ -6,22 +6,91 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>User Login</title>
+<link href="./css/bootstrap.css" rel="stylesheet">
+<style type="text/css">
+body {
+  padding-top: 200px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+</style>
+
 </head>
 
+
+
 <body>
-<h1>User Login</h1>
-<p style="color: red; font-weight: 900">${msg }</p>
-<form id="form1" name="form1" method="post" action="<c:url value='/UserServlet?method=login' />">
-  <p>Email:
-    <input type="text" name="email" id="email"  />
-  </p>
-  <p>Password:
-    <input type="password" name="password" id="password" />
-  </p>
-  <p>
-    <input type="submit" name="login" id="login" value="login" />
-  </p>
-</form>
+
+     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+
+                <a class="navbar-brand" href="#home">Bookstore</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#about">About</a>
+                    </li>
+                    <li><a href="#services">Services</a>
+                    </li>
+                    <li><a href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    
+  <div class="container">
+
+      <form class="form-signin" role="form" method="post" action="<c:url value='/UserServlet?method=login' />">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        Username: <input type="text" class="form-control" placeholder="Email address" required autofocus name="email" id="email">
+        <br/ >
+        Password: <input type="password" class="form-control" placeholder="Password" required name="password" id="password">
+		<br/ >
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
+
+    </div> 
 </body>
 </html>
 

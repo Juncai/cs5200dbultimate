@@ -7,32 +7,27 @@
 <base target="body" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>LeftNavigationBar</title>
+<link href="./css/bootstrap.css" rel="stylesheet">
+
 <style type="text/css">
-	*{
-		font-size:10pt;
-		text-align: center;
-	}
-	div {
-		background: #87CEFA; 
-		margin: 3px; 
-		padding: 3px;
-	}
-	a {
-		text-decoration: none;
-	}
+body{
+	background-color: #f7f7f9;
+}
 </style>
 </head>
 
 <body>
-	<div>
-    	<a href="<c:url value='/BookServlet?method=all'/>">All Category</a>
-    </div>
-    
-    <c:forEach items="${list }" var="category">
-	<div>
-    	<a href="<c:url value='/BookServlet?method=query&categoryID=${category.categoryID }'/>">${category.categoryname }</a>
+ 	
+    	
+    	<a href="<c:url value='/BookServlet?method=all'/>" class="list-group-item">All Category</a>
+
+     <c:forEach items="${list }" var="category">
+	<div >
+    	<a href="<c:url value='/BookServlet?method=query&categoryID=${category.categoryID }'/>" class="list-group-item">${category.categoryname }</a>
     </div>
 	</c:forEach>   
+
+          
 </body>
 </html>
 

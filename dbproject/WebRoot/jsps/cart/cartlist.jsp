@@ -7,6 +7,9 @@
   <head>
     <title>My JSP 'bookdesc.jsp' starting page</title>
     
+        <!-- Bootstrap core CSS -->
+    <link href="./css/bootstrap.css" rel="stylesheet">
+    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">
@@ -18,6 +21,7 @@
 	-->
 <style type="text/css">
 	* {
+		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 		font-size: 11pt;
 	}
 	div {
@@ -66,7 +70,7 @@
 	
 
 
-<table border="1" width="100%" cellspacing="0" background="black">
+<table class="table" border="1" width="100%" cellspacing="0" background="black">
 	<tr>
 		<td colspan="7" align="right" style="font-size: 15pt; font-weight: 900">
 			<a href="<c:url value='/cart/CartServlet?method=clear'/>">Clear Shopping Cart</a>
@@ -99,7 +103,7 @@
 	</tr>
 	<tr>
 		<td colspan="7" align="right" style="font-size: 15pt; font-weight: 900">
-			<a href="<c:url value='/order/OrderServlet?method=add'/>">Place Order</a>
+			<a id="buy" href="<c:url value='/order/OrderServlet?method=add'/>"></a>
 		</td>
 	</tr>
 </table>

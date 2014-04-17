@@ -1,11 +1,13 @@
 <%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Welcome to Bibliophile</title>
+<link href="./css/bootstrap.css" rel="stylesheet">
+<link href="./css/jumbotron.css" rel="stylesheet">
 <style type="text/css">
 #Title {
 	font-family: "MS Serif", "New York", serif;
@@ -17,7 +19,7 @@
 }
 
 body {
-	background: #4682B4;
+	background: #C0C0C0;
 }
 
 a {
@@ -38,22 +40,45 @@ div {
 </head>
 
 <body>
-	<h1>Biliophile -Your Online Book Store</h1>
-	<div id="nav">
-		<c:choose>
+
+	
+	
+	    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        
+        <div class="navbar-collapse collapse">
+        <c:choose>
 			<c:when test="${empty sessionScope.user }">
-			<a href="<c:url value='/UserServlet?method=loginPre'/>"
-			target="_parent">Login</a> &nbsp;|&nbsp; 
-			<a href="<c:url value='/UserServlet?method=registPre'/>" target="_parent">Sign up </a> 
+			<form class="navbar-form navbar-right" role="form">
+			<a href="<c:url value='/UserServlet?method=loginPre'/>" target="_parent" class="btn btn-info" role="button">Sign in </a>
+			<a href="<c:url value='/UserServlet?method=registPre'/>" target="_parent" class="btn btn-info" role="button">Register</a>            
+          </form>
 			</c:when>
-			<c:otherwise>
+          <c:otherwise>
+          <form class="navbar-form navbar-right" role="form">
 			Hello, ${sessionScope.user.firstname }!&nbsp;&nbsp;|&nbsp;&nbsp; 
-			<a href="<c:url value='/cart/CartServlet?method=showCart' />" target="body">Shopping Cart</a>&nbsp;&nbsp;|&nbsp;&nbsp; 
-			<a href="<c:url value='/order/OrderServlet?method=myOrders' />" target="body">My Order</a>&nbsp;&nbsp;|&nbsp;&nbsp; 
-			<a href="<c:url value='UserServlet?method=quit' />" target="_parent">Exit</a>
+			<a href="#">Shopping Cart</a>&nbsp;&nbsp;|&nbsp;&nbsp; 
+			<a href="#">My Order</a>&nbsp;&nbsp;|&nbsp;&nbsp; 
+			<a href="#">Exit</a>
+			</form>
 			</c:otherwise>
-		</c:choose>
-	</div>
+			</c:choose>
+        </div>
+        
+      </div>
+    </div> 
+    <div style="background-color=grey;"><h1>Biliophile -Your Online Book Store</h1>
+    </div>
+    
 </body>
 </html>
 
