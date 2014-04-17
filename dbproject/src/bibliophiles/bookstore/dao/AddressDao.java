@@ -15,6 +15,4 @@ public interface AddressDao {
 	public void update(Address address);
 	public void del(String addrID);
 	public List<Address> findByUserID(String userID);
-	
-	
 }

@@ -46,7 +46,7 @@ li {
 					Total：<font color="red"><b>$ ${order.total }</b></font> <c:choose>
 						<c:when test="${order.state eq 1 }">Unpaid</c:when>
 						<c:when test="${order.state eq 2 }"><a
-								href="<c:url value='/admin/AdminOrderServlet?method=updateDeliver&orderID=${order.orderID }'/>">Ship</a></c:when>
+								href="<c:url value='/admin/OrderServlet?method=updateDeliver&orderID=${order.orderID }'/>">Ship</a></c:when>
 						<c:when test="${order.state eq 3 }">Wait for confirm</c:when>
 						<c:when test="${order.state eq 4 }">Order completed</c:when>
 					</c:choose>

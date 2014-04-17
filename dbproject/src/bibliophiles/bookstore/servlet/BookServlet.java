@@ -25,9 +25,9 @@ public class BookServlet extends BaseServlet {
 	public String all(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		List<Book> bookList = bookService.all(); 
-//		JSONArray jsonList = JSONArray.fromObject(bookList);
+		JSONArray jsonList = JSONArray.fromObject(bookList);
 		request.setAttribute("list", bookList);
-//		request.setAttribute("jsonList", jsonList.toString());
+		request.setAttribute("jsonList", jsonList.toString());
 		return "/jsps/booklist.jsp";
 	}
 	

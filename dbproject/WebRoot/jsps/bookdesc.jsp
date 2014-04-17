@@ -30,7 +30,6 @@
 		margin: 10px;
 	}
 
-
 </style>
   </head>
   
@@ -48,6 +47,6 @@
   	<input type="hidden" name="isbn" value="${book.isbn }"/>
   	<input type="text" size="3" name="count" value="1"/>
   </form>
-  <a href="javascript:document.getElementById('form').submit();">Buy</a>
+  <a href="javascript:document.getElementById('form').submit();"><img src="<c:url value='/images/red_buynow.png'/>" width="150" height="75"></a>
   </body>
 </html>

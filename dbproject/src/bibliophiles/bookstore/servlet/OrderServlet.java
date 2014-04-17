@@ -31,15 +31,6 @@ public class OrderServlet extends BaseServlet {
 
 	}
 	
-	public String updatePay(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		String orderID = request.getParameter("orderID");
-		orderService.updateState(orderID, 2);
-		request.setAttribute("msg", "Thank you for your payment!");
-		return "/jsps/msg.jsp";
-
-	}
-	
 	public String orderDesc(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String orderID = request.getParameter("orderID");
