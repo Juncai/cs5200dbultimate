@@ -19,7 +19,7 @@ public class OrderItemServiceImpl implements OrderItemService {
 	}
 
 	public OrderItem load(String orderID, String isbn) {
-		return orderItemDao.laod(orderID, isbn);
+		return orderItemDao.load(orderID, isbn);
 	}
 
 }

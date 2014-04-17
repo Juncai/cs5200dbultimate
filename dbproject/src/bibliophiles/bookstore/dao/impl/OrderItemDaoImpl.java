@@ -38,7 +38,7 @@ public class OrderItemDaoImpl implements OrderItemDao {
 		}
 	}
 
-	public OrderItem laod(String orderID, String isbn) {
+	public OrderItem load(String orderID, String isbn) {
 		String sql = "SELECT * FROM orderItem WHERE orderID=?,isbn=?";
 		try {
 			return qr.query(sql, new BeanHandler<OrderItem>(OrderItem.class), orderID, isbn);
