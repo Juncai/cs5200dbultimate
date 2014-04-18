@@ -13,7 +13,14 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import org.apache.commons.beanutils.BeanUtils;
-
+/**
+ * 
+ * This Utils is to manage the connection pool
+ * of all the JDBC connections
+ *
+ * @author Team Bibliophiles
+ * 
+ */
 public class JdbcUtils {
 	private static DataSource dataSource;
 	static {init();}
