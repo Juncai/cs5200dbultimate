@@ -7,8 +7,30 @@ import java.util.UUID;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.ConvertUtils;
-
+/**
+ * 
+ * This class collects all the utils we need in this project
+ *
+ * @author Team Bibliophiles
+ * 
+ */
 public class CommonUtils {
+	
+	/**
+	 * 
+	 * This class is to generate an instance of a certain class 
+	 * with all attributes
+	 *
+	 * @param map
+	 * This is a map containing all the attribute name and value
+	 * 
+	 * @param clazz
+	 * This is the type of the instance that will be generated
+	 * 
+	 * @return
+	 * the instance with certain attributes
+	 * 
+	 */
 	public static <T> T toBean(Map map, Class<T> clazz) {
 		try {
 			T bean = clazz.newInstance();
@@ -20,6 +42,15 @@ public class CommonUtils {
 		}
 	}
 	
+	/**
+	 * 
+	 * This class is to generate a non-repeated ID
+	 * especially for database
+	 *
+	 * @return
+	 * primary key of a record in database
+	 * 
+	 */
 	public static String uuid() {
 		return UUID.randomUUID().toString().replace("-", "");
 	}
@@ -37,6 +68,15 @@ public class CommonUtils {
 		}
 	}
 	
+	/**
+	 * 
+	 * This class is to replace all the converted symbols that
+	 * can cause bugs on HTML or XML
+	 *
+	 * @return
+	 * filtered string
+	 * 
+	 */
 	public static String filter(String message) {
         if (message == null)
             return (null);
@@ -65,7 +105,14 @@ public class CommonUtils {
         return (result.toString());
 	}
 	
-
+	/**
+	 * 
+	 * This class is to convert "\n" into a HTML-style < br/ >
+	 *
+	 * @return
+	 * modified string
+	 * 
+	 */
 	public static String toBr(String s) {
 		return s.replace("\r\n", "<br/>");
 	}

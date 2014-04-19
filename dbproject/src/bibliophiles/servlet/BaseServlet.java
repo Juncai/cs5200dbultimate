@@ -8,7 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+/**
+ * 
+ * This is servlet is the parent servlet of all the 
+ * children servelt that need to forward somewhere.
+ * This class refer the thought of Structs 1.0
+ * 
+ * In this class, we invoke the children method to
+ * get the forward path and forward in the service 
+ * method of the parent class
+ *
+ * @author Team Bibliophiles
+ * 
+ */
 public class BaseServlet extends HttpServlet {
 
 	public void service(HttpServletRequest request, HttpServletResponse response)

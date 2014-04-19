@@ -14,7 +14,15 @@ import javax.servlet.http.HttpSession;
 
 import bibliophiles.bookstore.admin.domain.Administrator;
 
-
+/**
+ * 
+ * This is filter. If the someone skip the login page 
+ * and enter the admin page. This filter will block
+ * him/her out by checking the session. 
+ * 
+ * @author Team Bibliophiles
+ * 
+ */
 @WebFilter({ "/admin/*", "/adminjsps/admin/*" })
 public class AdminLoginFilter implements Filter {
 
