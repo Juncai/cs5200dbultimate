@@ -2,7 +2,9 @@ package bibliophiles.bookstore.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -25,9 +27,9 @@ public class BookServlet extends BaseServlet {
 	public String all(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		List<Book> bookList = bookService.all(); 
-		JSONArray jsonList = JSONArray.fromObject(bookList);
+//		JSONArray jsonList = JSONArray.fromObject(bookList);
 		request.setAttribute("list", bookList);
-		request.setAttribute("jsonList", jsonList.toString());
+//		request.setAttribute("jsonList", jsonList.toString());
 		return "/jsps/booklist.jsp";
 	}
 	
@@ -46,4 +48,30 @@ public class BookServlet extends BaseServlet {
 		request.setAttribute("orderItems", orderItems);
 		return "/jsps/bookdesc.jsp";
 	}
+	
+	public String search(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+//		Map<String, String> condMap = request.getParameterMap();
+		Map<String, String> condMap = new HashMap<String, String>();
+		if (!request.getParameter("author").equals("")) {
+			condMap.put("author", request.getParameter("author"));			
+		}
+		if (!request.getParameter("title").equals("")) {
+			condMap.put("title", request.getParameter("title"));			
+		}
+		if (!request.getParameter("publisher").equals("")) {
+			condMap.put("publisher", request.getParameter("publisher"));			
+		}
+		if (!request.getParameter("isbn").equals("")) {
+			condMap.put("isbn", request.getParameter("isbn"));			
+		}
+		
+		List<Book> bookList = bookService.searchBooks(condMap);
+		if (bookList.size() == 0) {
+			request.setAttribute("msg", "No results.");
+		}
+		request.setAttribute("list", bookList);
+		return "/jsps/booksearch.jsp";
+	}
+	
 }

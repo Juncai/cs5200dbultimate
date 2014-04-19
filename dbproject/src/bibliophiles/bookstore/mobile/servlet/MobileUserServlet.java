@@ -10,7 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import bibliophiles.bookstore.domain.User;
 import bibliophiles.bookstore.service.UserService;
 import bibliophiles.bookstore.service.impl.UserServiceImpl;
-
+/**
+ * 
+ * This is servlet is for mobile to login
+ *
+ * @author Team Bibliophiles
+ * 
+ */
 public class MobileUserServlet extends HttpServlet {
 	private UserService userService = new UserServiceImpl();
 	

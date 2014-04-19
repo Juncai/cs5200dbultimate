@@ -22,8 +22,11 @@ public interface OrderItemDao {
 	 * @param orderID
 	 * @param isbn
 	 * @param rating
-	 * ta
+	 * the rating is among 1 star, 2, 3, 4, 5. The higher
+	 * the better
+	 * 
 	 * @param review
+	 * the comment of the book
 	 * 
 	 * @throws SQLException if there is an exception 
 	 * that provides information on a database access

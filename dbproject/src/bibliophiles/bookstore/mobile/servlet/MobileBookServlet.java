@@ -13,9 +13,15 @@ import net.sf.json.JSONArray;
 import bibliophiles.bookstore.domain.Book;
 import bibliophiles.bookstore.service.BookService;
 import bibliophiles.bookstore.service.impl.BookServiceImpl;
-
+/**
+ * 
+ * This is servlet is to offer the mobile part
+ * with all the book infomation
+ *
+ * @author Team Bibliophiles
+ * 
+ */
 public class MobileBookServlet extends HttpServlet {
-
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

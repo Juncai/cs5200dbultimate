@@ -1,0 +1,7 @@
+﻿*.class
+c3p0-config.xml
+.project
+.mymetadata
+*.prefs
+.settings
+META-INF

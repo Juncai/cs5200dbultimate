@@ -14,7 +14,15 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
 import bibliophiles.bookstore.domain.User;
-
+/**
+ * 
+ * This is filter. If the user skip the login page 
+ * and enter the main page. This filter will block
+ * him/or out by checking the session. 
+ * 
+ * @author Team Bibliophiles
+ * 
+ */
 @WebFilter({ "/cart/*", "/jsps/cart/*" })
 public class LoginFilter implements Filter {
 	public LoginFilter() {}
