@@ -1,6 +1,7 @@
 package bibliophiles.bookstore.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import bibliophiles.bookstore.dao.BookDao;
 import bibliophiles.bookstore.dao.impl.BookDaoImpl;
@@ -38,4 +39,8 @@ public class BookServiceImpl implements BookService {
 		return bookDao.findByPublisherID(publisherID);
 	}
 
+	public List<Book> searchBooks(Map<String, String> conditions) {
+		return bookDao.findList(conditions);
+	}
+	
 }

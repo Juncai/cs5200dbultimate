@@ -26,4 +26,9 @@ public class IndexServlet extends BaseServlet {
 		return "/CategoryServlet?method=all";
 //		return "/jsps/left.jsp";
 	}
+	
+	public String search(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		return "/jsps/booksearch.jsp";
+	}
 }

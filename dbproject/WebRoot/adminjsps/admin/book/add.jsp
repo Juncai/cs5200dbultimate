@@ -21,14 +21,15 @@
   </head>
   
   <body>
-    <h1>添加图书</h1>
+    <h1>Add Book</h1>
     <p style="font-weight: 900; color: red">${msg }</p>
     <form action="<c:url value='/admin/AdminAddBookServlet'/>" method="post" enctype="multipart/form-data">
     	ISBN:   <input style="width: 150px; height: 20px;" type="text" name="isbn"/><br/>
     	Title:  <input style="width: 150px; height: 20px;" type="text" name="title"/><br/>
     	Cover:  <input style="width: 223px; height: 20px;" type="file" name="cover"/><br/>
     	Price:  <input style="width: 150px; height: 20px;" type="text" name="price"/><br/>
-    	Author: <input style="width: 150px; height: 20px;" type="text" name="author"/><br/>
+    	Author: <input style="width: 150px; height: 20px;" type="text" name="firstname"/> &nbsp; <input style="width: 150px; height: 20px;" type="text" name="lastname"/><br/>
+    	Publisher: <input style="width: 150px; height: 20px;" type="text" name="publisher"/><br/>
     	Category: <select style="width: 150px; height: 20px;" name="categoryID">
     		<c:forEach items="${categoryList }" var="category">
     		<option value="${category.categoryID }">${category.categoryname }</option>

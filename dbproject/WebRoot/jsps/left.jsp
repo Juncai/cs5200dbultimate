@@ -26,7 +26,7 @@ body{
     	<a href="<c:url value='/BookServlet?method=query&categoryID=${category.categoryID }'/>" class="list-group-item">${category.categoryname }</a>
     </div>
 	</c:forEach>   
-
+	<a href="<c:url value='/IndexServlet?method=search'/>" class="list-group-item">Book Search</a>
           
 </body>
 </html>

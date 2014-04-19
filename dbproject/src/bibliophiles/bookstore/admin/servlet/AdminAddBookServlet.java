@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bibliophiles.bookstore.domain.Category;
+import bibliophiles.bookstore.service.BookService;
 import bibliophiles.bookstore.service.CategoryService;
+import bibliophiles.bookstore.service.impl.BookServiceImpl;
 import bibliophiles.bookstore.service.impl.CategoryServiceImpl;
 
 public class AdminAddBookServlet extends HttpServlet {
@@ -20,6 +22,7 @@ public class AdminAddBookServlet extends HttpServlet {
 			throws ServletException, IOException {
 		CategoryService categoryService = new CategoryServiceImpl();
 		List<Category> categoryList = categoryService.all();
+		BookService bookService = new BookServiceImpl();
 		
 		
 

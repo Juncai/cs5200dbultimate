@@ -235,10 +235,31 @@ public class BookDaoImpl implements BookDao {
 				+ "AND b.categoryID=c.categoryID AND b.publisherID=p.publisherID "
 				+ "AND isdel=FALSE";
 		StringBuffer sb = new StringBuffer(sql);
+		String condContent = "";
 		
 		for (String condition : conditions.keySet()) {
-			sb.append("," + condition + "=" + conditions.get(condition));
+			condContent = (String)conditions.get(condition);
+//			if(conditions.get(condition) != null && !conditions.get(condition).equals("")){
+//			if(!conditions.get(condition).equals("")){
+				if(condition.equals("title")){
+					condition = "b.title";
+					sb.append(" AND " + condition + "='" + condContent + "'");
+				} else if(condition.equals("publisher")){
+					condition = "p.name";
+					sb.append(" AND " + condition + "='" + condContent + "'");
+				} else if(condition.equals("author")){
+					condition = "(a.firstName='" + condContent + "' OR a.lastName='" + condContent + "')"; 
+					sb.append(" AND " + condition);
+				} else if(condition.equals("isbn")){
+					condition = "b.isbn";
+					sb.append(" AND " + condition + "='" + condContent + "'");
+				}
+//			}
 		}
+		
+		sb.append(";");
+		
+		sql = sb.toString();
 		
 		try {
 			List<Book> bookList = new ArrayList<Book>();
