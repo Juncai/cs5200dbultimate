@@ -21,7 +21,7 @@
 
 var bar1 = new Q6MenuBar("bar1", "Bibliophiles Online Bookstore");
 function load() {
-	bar1.colorStyle = 2;
+	bar1.colorStyle = 0;
 	bar1.config.imgDir = "<c:url value='/menu/img/'/>";
 	bar1.config.radioButton=false;
 
