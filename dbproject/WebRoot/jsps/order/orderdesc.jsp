@@ -82,24 +82,10 @@ li {
 		</c:forEach>
 	</table>
 	<br />
-	<form method="post" action="#" id="form" target="_parent">
-		收货地址：<input type="text" name="address" size="50"
-			value="北京市海淀区金燕龙大厦2楼216室无敌收" /><br /> 选择银行：<br /> <input
-			type="radio" name="pd_FrpId" value="ICBC-NET-B2C" checked="checked" />工商银行
-		<img src="<c:url value='/bank_img/icbc.bmp'/>" align="middle" /> <input
-			type="radio" name="pd_FrpId" value="BOC-NET-B2C" />中国银行 <img
-			src="<c:url value='/bank_img/bc.bmp'/>" align="middle" /><br /> <br />
-		<input type="radio" name="pd_FrpId" value="ABC-NET-B2C" />农业银行 <img
-			src="<c:url value='/bank_img/abc.bmp'/>" align="middle" /> <input
-			type="radio" name="pd_FrpId" value="CCB-NET-B2C" />建设银行 <img
-			src="<c:url value='/bank_img/ccb.bmp'/>" align="middle" /><br /> <br />
-		<input type="radio" name="pd_FrpId" value="BOCO-NET-B2C" />交通银行 <img
-			src="<c:url value='/bank_img/bcc.bmp'/>" align="middle" /><br />
-	</form>
-	<a id="buy" href="javascript:_go()"></a>
+	<a href="javascript:_go()"><img src="<c:url value='/images/payment.jpg'/>" width="150" height="75"></a>
 	<script type="text/javascript">
 		function _go() {
-			alert('需要连接在线支付系统！');
+			alert('Need to connect to online payment system!');
 		}
 	</script>
 </body>

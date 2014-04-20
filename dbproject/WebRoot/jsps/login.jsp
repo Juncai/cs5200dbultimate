@@ -60,13 +60,13 @@ body {
         <div class="container">
             <div class="navbar-header">
 
-                <a class="navbar-brand" href="#home">Bookstore</a>
+                <a class="navbar-brand" href="index.jsp">Bookstore</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="#about">About</a>
+                    <li><a href="about.jsp">About</a>
                     </li>
                     <li><a href="#services">Services</a>
                     </li>

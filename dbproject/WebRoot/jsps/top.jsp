@@ -66,9 +66,9 @@ div {
           <c:otherwise>
           <form class="navbar-form navbar-right" role="form">
 			Hello, ${sessionScope.user.firstname }!&nbsp;&nbsp;|&nbsp;&nbsp; 
-			<a href="#">Shopping Cart</a>&nbsp;&nbsp;|&nbsp;&nbsp; 
-			<a href="#">My Order</a>&nbsp;&nbsp;|&nbsp;&nbsp; 
-			<a href="#">Exit</a>
+			<a href="<c:url value='/cart/CartServlet?method=showCart'/>" target="body">Shopping Cart</a>&nbsp;&nbsp;|&nbsp;&nbsp; 
+			<a href="<c:url value='/order/OrderServlet?method=myOrders'/>" target="body">My Order</a>&nbsp;&nbsp;|&nbsp;&nbsp; 
+			<a href="<c:url value='/UserServlet?method=quit'/>" target="_parent">Exit</a>
 			</form>
 			</c:otherwise>
 			</c:choose>

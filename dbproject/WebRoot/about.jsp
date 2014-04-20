@@ -74,11 +74,11 @@ iframe {
                 <ul class="nav navbar-nav">
                     <li><a href="#">Hello, ${sessionScope.user.firstname }! </a>
                     </li>
-                    <li><a href="#">Shopping Cart</a>
+                    <li><a href="<c:url value='/cart/CartServlet?method=showCart'/>" target="body">Shopping Cart</a>
                     </li>
-                    <li><a href="#">My Order</a>
+                    <li><a href="<c:url value='/order/OrderServlet?method=myOrders'/>" target="body">My Order</a>
                     </li>
-                    <li><a href="#">Exit</a>
+                    <li><a href="<c:url value='/UserServlet?method=quit'/>" target="_parent">Exit</a>
                     </li>
                 </ul>
             </div>
@@ -119,21 +119,21 @@ iframe {
 
         <div class="row">
             <div class="col-lg-4 col-sm-6">
-                <img class="img-circle img-responsive" src="http://placehold.it/200x200">
+                <img class="img-circle img-responsive" src="<c:url value='/images/chentengjiao.jpg'/>" width="200" height="100">
                 <h3>Tengjiao Chen
                     
                 </h3>
                 <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
             </div>
             <div class="col-lg-4 col-sm-6">
-                <img class="img-circle img-responsive" src="http://placehold.it/200x200">
+                <img class="img-circle img-responsive" src="<c:url value='/images/caijun.jpg'/>" width="200" height="100">
                 <h3>Jun Cai
                     
                 </h3>
                 <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
             </div>
             <div class="col-lg-4 col-sm-6">
-                <img class="img-circle img-responsive" src="http://placehold.it/200x200">
+                <img class="img-circle img-responsive" src="<c:url value='/images/zhuangtancheng.jpg'/>" width="200" height="200">
                 <h3>Tancheng Zhuang
                     
                 </h3>

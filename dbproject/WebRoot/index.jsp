@@ -74,11 +74,11 @@ iframe {
                 <ul class="nav navbar-nav">
                     <li><a href="#">Hello, ${sessionScope.user.firstname }! </a>
                     </li>
-                    <li><a href="#">Shopping Cart</a>
+                    <li><a href="<c:url value='/cart/CartServlet?method=showCart'/>" target="body">Shopping Cart</a>
                     </li>
-                    <li><a href="#">My Order</a>
+                    <li><a href="<c:url value='/order/OrderServlet?method=myOrders'/>" target="body">My Order</a>
                     </li>
-                    <li><a href="#">Exit</a>
+                    <li><a href="<c:url value='/UserServlet?method=quit'/>" target="_parent">Exit</a>
                     </li>
                 </ul>
             </div>
