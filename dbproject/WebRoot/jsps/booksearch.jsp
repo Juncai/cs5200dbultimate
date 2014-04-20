@@ -69,7 +69,7 @@
 
 	var urlGen = function(title, author, publisher, isbn, startIndex,
 			itemsPerPage) {
-		var key = "AIzaSyCeqxZ0MaP49o78WFBW2T3d qnlNcYUKM5s";
+		var key = "AIzaSyCeqxZ0MaP49o78WFBW2T3dqnlNcYUKM5s";
 		var searchUrl = "https://www.googleapis.com/books/v1/volumes?key="
 				+ key + "&q=";
 		if (title != null && title != "") {

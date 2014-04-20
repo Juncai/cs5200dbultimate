@@ -73,5 +73,4 @@ public class BookServlet extends BaseServlet {
 		request.setAttribute("list", bookList);
 		return "/jsps/booksearch.jsp";
 	}
-	
 }

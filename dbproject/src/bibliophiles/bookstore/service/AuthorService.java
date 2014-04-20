@@ -1,17 +1,12 @@
-package bibliophiles.bookstore.dao;
+package bibliophiles.bookstore.service;
 
 import java.util.List;
 
 import bibliophiles.bookstore.domain.Author;
-/**
- * This is the Data Access Object for creating,
- *  referring, updating and deleting the database 
- * 
- * @author Team Bibliophiles
- */
-public interface AuthorDao {
+
+public interface AuthorService {
 	public void add(Author author);
-	public void update(Author author);
+	public void mod(Author author);
 	public void del(String authorID);
 	public Author findByAuthorID(String authorID);
 	public List<Author> all();

@@ -168,7 +168,7 @@ public class BookDaoImpl implements BookDao {
 	}
 
 	public void add(Book book) {
-		String sql = "INSERT INTO book VALUES(?,?,?,?,?,?,?,?,?";
+		String sql = "INSERT INTO book VALUES(?,?,?,?,?,?,?,?,?)";
 		try {
 			qr.update(sql, book.getIsbn(), book.getTitle(), book.getPrice(),
 					book.getCover(), book.getRating(), book.getPublisher()

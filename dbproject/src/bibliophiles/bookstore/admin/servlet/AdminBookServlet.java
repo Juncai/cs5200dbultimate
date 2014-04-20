@@ -10,16 +10,23 @@ import javax.servlet.http.HttpServletResponse;
 
 import bibliophiles.bookstore.domain.Book;
 import bibliophiles.bookstore.domain.Category;
+import bibliophiles.bookstore.service.AuthorService;
 import bibliophiles.bookstore.service.BookService;
 import bibliophiles.bookstore.service.CategoryService;
+import bibliophiles.bookstore.service.PublisherService;
+import bibliophiles.bookstore.service.impl.AuthorServiceImpl;
 import bibliophiles.bookstore.service.impl.BookServiceImpl;
 import bibliophiles.bookstore.service.impl.CategoryServiceImpl;
+import bibliophiles.bookstore.service.impl.PublisherServiceImpl;
 import bibliophiles.servlet.BaseServlet;
 import bibliophiles.utils.CommonUtils;
 
 public class AdminBookServlet extends BaseServlet {
 	private BookService bookService = new BookServiceImpl();
 	private CategoryService categoryService = new CategoryServiceImpl();
+	private PublisherService publisherService = new PublisherServiceImpl();
+	private AuthorService authorService = new AuthorServiceImpl();
+	
 	
 	public String all(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -56,7 +63,6 @@ public class AdminBookServlet extends BaseServlet {
 		bookService.mod(book);
 		request.setAttribute("msg", "Book info modified.");
 		return "/adminjsps/admin/msg.jsp";
-
 	}
 	
 	public String addPre(HttpServletRequest request, HttpServletResponse response)
@@ -64,5 +70,10 @@ public class AdminBookServlet extends BaseServlet {
 		List<Category> categoryList = categoryService.all();
 		request.setAttribute("categoryList", categoryList);
 		return "/adminjsps/admin/book/add.jsp";
+	}
+	
+	public String add(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
 	}
 }
