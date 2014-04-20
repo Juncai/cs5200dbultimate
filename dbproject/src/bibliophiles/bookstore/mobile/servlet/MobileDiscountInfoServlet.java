@@ -17,7 +17,14 @@ import net.sf.json.JSONArray;
 import bibliophiles.bookstore.domain.Book;
 import bibliophiles.bookstore.service.BookService;
 import bibliophiles.bookstore.service.impl.BookServiceImpl;
-
+/**
+ * 
+ * This is servlet is to send a message when there
+ * is a discount on some of the book.
+ *
+ * @author Team Bibliophiles
+ * 
+ */
 public class MobileDiscountInfoServlet extends HttpServlet {
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)

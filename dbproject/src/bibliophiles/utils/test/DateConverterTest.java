@@ -6,8 +6,9 @@ import org.junit.Test;
 
 import bibliophiles.utils.DateConverter;
 /**
+ * This class is the test the DateConverter util
  * 
- * @author tanchengzhuang
+ * @author Team Bibliophiles
  *
  */
 public class DateConverterTest {

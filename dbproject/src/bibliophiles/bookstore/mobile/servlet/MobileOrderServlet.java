@@ -23,7 +23,13 @@ import bibliophiles.bookstore.service.UserService;
 import bibliophiles.bookstore.service.impl.BookServiceImpl;
 import bibliophiles.bookstore.service.impl.OrderServiceImpl;
 import bibliophiles.bookstore.service.impl.UserServiceImpl;
-
+/**
+ * 
+ * This is servlet is to receive the order from mobile
+ *
+ * @author Team Bibliophiles
+ * 
+ */
 public class MobileOrderServlet extends HttpServlet {
  
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
