@@ -74,11 +74,11 @@ iframe {
                 <ul class="nav navbar-nav">
                     <li><a href="#">Hello, ${sessionScope.user.firstname }! </a>
                     </li>
-                    <li><a href="#">Shopping Cart</a>
+                    <li><a href="<c:url value='/cart/CartServlet?method=showCart'/>" target="body">Shopping Cart</a>
                     </li>
-                    <li><a href="#">My Order</a>
+                    <li><a href="<c:url value='/order/OrderServlet?method=myOrders'/>" target="body">My Order</a>
                     </li>
-                    <li><a href="#">Exit</a>
+                    <li><a href="<c:url value='/UserServlet?method=quit'/>" target="_parent">Exit</a>
                     </li>
                 </ul>
             </div>
@@ -115,10 +115,10 @@ iframe {
                             </ol>
                             <div class="carousel-inner">
                                 <div class="item active">
-                                    <img class="slide-image" src="http://upload.wikimedia.org/wikipedia/commons/2/29/Dscn7471_sunset-sundog_crop_800x300.jpg" alt="">
+                                    <img class="slide-image" src="http://www.weupcycle.com/wp-content/uploads/2012/02/kindlebuch1-800x300.jpg" alt="">
                                 </div>
                                 <div class="item">
-                                    <img class="slide-image" src="http://www.themattefinish.com/photos/wp-content/uploads/2012/02/DSC_0082-800x300.jpg" alt="">
+                                    <img class="slide-image" src="http://www.rojaksite.com/wp-content/uploads/2011/12/book-sculptures-guy-laramee-800x300.jpg" alt="">
                                 </div>
                                 <div class="item">
                                     <img class="slide-image" src="http://isocialtv.com/sites/default/files/vth/townhalls/splashes/image_027-800x300.jpg?1340545140" alt="">

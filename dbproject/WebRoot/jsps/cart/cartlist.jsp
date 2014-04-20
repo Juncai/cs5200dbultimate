@@ -103,7 +103,7 @@
 	</tr>
 	<tr>
 		<td colspan="7" align="right" style="font-size: 15pt; font-weight: 900">
-			<a id="buy" href="<c:url value='/order/OrderServlet?method=add'/>"></a>
+			<a href="<c:url value='/order/OrderServlet?method=add'/>"><img src="<c:url value='/images/Checkout.jpg'/>" width="146" height="44"></a>
 		</td>
 	</tr>
 </table>

@@ -99,7 +99,7 @@
 		var list = jQuery("#bookList");
 		list.empty();
 		if (volumes) {
-			var liStr = '<li id="123"><img height="100" src="http://123.456"/><span class="title"></span><span class="isbn"></span><button class="reserveButton">Reserve</button></li>';
+			var liStr = '<li id="123"> <table  width="100%"> <tr><td rowspan=2 width="105"><img height="100" width="100" src="http://123.456"/></td><td class="title" colspan=2></td></tr><tr><td class="isbn" ></td><td><button class="reserveButton">Reserve</button></td></tr></table></li>';
 			for (var m = 0; m < volumes.length; m++) {
 				var volume = volumes[m];
 				var isbn = null;
@@ -127,7 +127,7 @@
 				var id = volume.id;
 				var title = volume.volumeInfo.title;
 				var thumbnail = volume.volumeInfo.imageLinks ? volume.volumeInfo.imageLinks.thumbnail
-						: null;
+						: "http://www.pizzapizza.ca/wpf/wp-content/themes/PPLWebFinal_v1/images/no-image.gif";
 
 				var li = jQuery(liStr);
 
@@ -219,6 +219,15 @@ body {
 	height: 180px;
 	text-align: center;
 	float: left;
+}
+.reserveButton{
+	float:right
+}
+table{
+border:1px solid #000;
+}
+td{
+border:none;
 }
 </style>
 
