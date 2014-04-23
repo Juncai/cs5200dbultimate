@@ -45,7 +45,7 @@ public class AuthorDaoImpl implements AuthorDao {
 	public Author findByAuthorID(String authorID) {
 		String sql = "SELECT * FROM author WHERE authorID=?";
 		try {
-			return qr.query(sql, new BeanHandler<Author>(Author.class));
+			return qr.query(sql, new BeanHandler<Author>(Author.class), authorID);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -68,6 +68,15 @@ public class AuthorDaoImpl implements AuthorDao {
 		try {
 //			List<Publisher> list = qr.query(sql, new BeanListHandler<Publisher>(Publisher.class));
 			return qr.query(sql, new BeanListHandler<Author>(Author.class), isbn);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public Author findByName(Author author){
+		String sql = "SELECT * FROM author WHERE firstname=? AND lastname=?";
+		try {
+			return qr.query(sql, new BeanHandler<Author>(Author.class), author.getFirstname(), author.getLastname());
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}

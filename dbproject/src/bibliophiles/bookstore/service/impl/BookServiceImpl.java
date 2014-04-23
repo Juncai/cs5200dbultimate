@@ -42,5 +42,19 @@ public class BookServiceImpl implements BookService {
 	public List<Book> searchBooks(Map<String, String> conditions) {
 		return bookDao.findList(conditions);
 	}
+
+	public List<Book> findReserved() {
+		return bookDao.findReserved();
+	}
+
+	public List<Book> findInStore() {
+		return bookDao.findInStore();
+	}
+
+	public List<Book> findInStoreByCategoryID(String categoryID) {
+		return bookDao.findInStoreByCategoryID(categoryID);
+	}
+
+	
 	
 }

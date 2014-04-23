@@ -126,4 +126,46 @@ public interface BookDao {
 	 * @return all the books with certain conditions
 	 */
 	List<Book> findList(Map<String, String> conditions);
+	
+	/**
+	 * This method is to look up all the books
+	 * in the database that are reserved by customers
+	 * 
+	 * @return all the books in the database
+	 * 
+	 * @throws SQLException if there is an exception 
+	 * that provides information on a database access
+	 * error or other errors.
+	 */
+	List<Book> findReserved();
+	
+	/**
+	 * This method is to look up all the books
+	 * in the database that are in store
+	 * 
+	 * @return all the books in the database
+	 * 
+	 * @throws SQLException if there is an exception 
+	 * that provides information on a database access
+	 * error or other errors.
+	 */
+	List<Book> findInStore();
+	
+	/**
+	 * This method is to look up all the books in 
+	 * the same category that are in store.
+	 * 
+	 * @param categoryID 
+	 * There are several categories in the application.
+	 * For example, J2EE, JSP and etc.. All of them will
+	 * be saved in the database. The id of these categories
+	 * are generated with UUID(by Apache).
+	 * 
+	 * @return all the books 
+	 * 
+	 * @throws SQLException if there is an exception 
+	 * that provides information on a database access
+	 * error or other errors.
+	 */
+	List<Book> findInStoreByCategoryID(String categoryID);
 }

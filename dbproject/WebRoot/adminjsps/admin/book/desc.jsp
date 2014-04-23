@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -47,13 +48,21 @@
   
   <body>
   <div>
+    <c:choose>
+    <c:when test="${fn:startsWith(book.cover, 'book_img') }">
     <img src="<c:url value='/${book.cover }'/>" border="0"/>
+    </c:when>
+    <c:otherwise>
+    <img src="${book.cover }" border="0" height="150"/>
+    </c:otherwise>
+    </c:choose>
   </div>
   <form style="margin:20px;" id="form" action="<c:url value='/admin/AdminBookServlet'/>" method="post">
   	<input type="hidden" name="isbn" value="${book.isbn }"/>
-  	Title: <input type="text" name="title" value="${book.title }"/><br/>
+  	Title: ${book.title }<br/>
   	Price: $ <input type="text" name="price" value="${book.price }"/><br/>
-  	Author: <input type="text" name="author" value=""/><br/>
+  	Author: <br/><c:forEach items="${book.authors }"
+							var="author">${author.firstname } ${author.lastname } <br/>   </c:forEach>
   	Category: <select style="width: 150px; height: 20px;" name="categoryID"> 
 			<c:forEach items="${categoryList }" var="category">
      		<c:choose>

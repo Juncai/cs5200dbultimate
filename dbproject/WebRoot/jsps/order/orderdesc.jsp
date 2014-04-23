@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -67,7 +68,14 @@ li {
 			<tr bordercolor="gray" align="center">
 				<td width="15%">
 					<div>
-						<img src="<c:url value='/${orderItem.book.cover }'/>" height="75" />
+						<c:choose>
+							<c:when test="${fn:startsWith(orderItem.book.cover, 'book_img') }">
+								<img src="<c:url value='/${orderItem.book.cover }'/>" height="75" />
+							</c:when>
+							<c:otherwise>
+								<img src="${orderItem.book.cover }" height="75" />
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</td>
 				<td>Title: ${orderItem.book.title }</td>
@@ -75,18 +83,15 @@ li {
 				<td>Authors: <c:forEach items="${orderItem.book.authors }"
 						var="author">${author.firstname } ${author.lastname }    </c:forEach></td>
 				<td>Quantity: ${orderItem.count }</td>
-				<td>Subtotal: $ <fmt:formatNumber value="${orderItem.subtotal }"
-						pattern="#.00" />
+				<td>Subtotal: $ <fmt:formatNumber
+						value="${orderItem.subtotal }" pattern="#.00" />
 				</td>
 			</tr>
 		</c:forEach>
 	</table>
 	<br />
-	<a href="javascript:_go()"><img src="<c:url value='/images/payment.jpg'/>" width="150" height="75"></a>
-	<script type="text/javascript">
-		function _go() {
-			alert('Need to connect to online payment system!');
-		}
-	</script>
+	<a
+		href="<c:url value='/order/OrderServlet?method=updatePay&orderID=${order.orderID }'/>">Make
+		Payment</a>
 </body>
 </html>

@@ -38,5 +38,9 @@ public class CategoryServiceImpl implements CategoryService {
 	public Category findByCategoryID(String categoryID) {
 		return categoryDao.findByCategoryID(categoryID);
 	}
+	
+	public Category findByCategory(String categoryName) {
+		return categoryDao.findByCategory(categoryName);
+	}
 
 }

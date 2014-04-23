@@ -12,7 +12,7 @@ public class AuthorServiceImpl implements AuthorService {
 	private AuthorDao authorDao = new AuthorDaoImpl();
 	
 	public void add(Author author) {
-		authorDao.add(author);
+		authorDao.add(author);			
 	}
 
 	public void mod(Author author) {
@@ -33,6 +33,10 @@ public class AuthorServiceImpl implements AuthorService {
 
 	public List<Author> findByBookISBN(String isbn) {
 		return authorDao.findByBookISBN(isbn);
+	}
+
+	public Author findByName(Author author) {
+		return authorDao.findByName(author);
 	}
 
 }

@@ -12,6 +12,9 @@ public interface BookService {
 	List<Book> findByCategoryID(String categoryID);
 	List<Book> findByPublisherID(String publisherID);
 	List<Book> searchBooks(Map<String, String> conditions);
+	List<Book> findReserved();
+	List<Book> findInStore();
+	List<Book> findInStoreByCategoryID(String categoryID);
 	Book findByIsbn(String isbn);
 	void mod(Book book);
 	void del(String isbn);

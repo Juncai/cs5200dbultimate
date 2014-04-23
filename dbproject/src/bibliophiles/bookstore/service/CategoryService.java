@@ -11,4 +11,5 @@ public interface CategoryService {
 	void mod(Category category);
 	void del(String categoryID) throws CategoryException;
 	Category findByCategoryID(String categoryID);
+	Category findByCategory(String categoryName);
 }

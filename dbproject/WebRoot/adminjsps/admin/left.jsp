@@ -29,6 +29,7 @@ function load() {
 	bar1.add("Category Admin", "Add Category", "<c:url value='/admin/AdminCategoryServlet?method=addPre'/>", "body");
 
 	bar1.add("Book Admin", "All Books", "<c:url value='/admin/AdminBookServlet?method=all'/>", "body");
+	bar1.add("Book Admin", "Reserved Books", "<c:url value='/admin/AdminBookServlet?method=reserved'/>", "body");
 	bar1.add("Book Admin", "Add book", "<c:url value='/admin/AdminBookServlet?method=addPre'/>", "body");
 
 	bar1.add("Order Admin", "All Orders", "<c:url value='/admin/AdminOrderServlet?method=all'/>", "body");

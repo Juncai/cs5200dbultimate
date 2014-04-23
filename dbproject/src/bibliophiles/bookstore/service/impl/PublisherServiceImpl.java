@@ -11,7 +11,7 @@ public class PublisherServiceImpl implements PublisherService {
 	private PublisherDao publisherDao = new PublisherDaoImpl();
 	
 	public void add(Publisher publisher) {
-		publisherDao.add(publisher);
+		publisherDao.add(publisher);			
 	}
 
 	public void mod(Publisher publisher) {

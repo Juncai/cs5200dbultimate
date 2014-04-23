@@ -16,4 +16,5 @@ public interface AuthorDao {
 	public Author findByAuthorID(String authorID);
 	public List<Author> all();
 	public List<Author> findByBookISBN(String isbn);
+	public Author findByName(Author author);
 }

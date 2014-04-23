@@ -79,10 +79,10 @@
 			searchUrl += "+inauthor:" + author;
 		}
 		if (publisher != null && publisher != "") {
-			searchUrl += "+inpublisher" + publisher;
+			searchUrl += "+inpublisher:" + publisher;
 		}
 		if (isbn != null && isbn != "") {
-			searchUrl += "+isbn" + isbn;
+			searchUrl += "+isbn:" + isbn;
 		}
 		searchUrl += "&startIndex=" + startIndex;
 		searchUrl += "&maxResults=" + itemsPerPage;
@@ -99,7 +99,13 @@
 		var list = jQuery("#bookList");
 		list.empty();
 		if (volumes) {
-			var liStr = '<li id="123"> <table  width="100%"> <tr><td rowspan=2 width="105"><img height="100" width="100" src="http://123.456"/></td><td class="title" colspan=2></td></tr><tr><td class="isbn" ></td><td><button class="reserveButton">Reserve</button></td></tr></table></li>';
+			var liStr = '<li id="123"> <table  width="100%"> <tr><td rowspan=2 width="105">';
+			liStr += '<img height="100" width="100" src="http://123.456"/></td><td class="title" colspan=2></td>';
+			liStr += '</tr><tr><td class="isbn" ></td>';
+			liStr += '<td><form class="form" action="<c:url value='/BookServlet?method=reserve'/>" method="post">';
+			liStr += '<input class="input" name="bookJson" type="hidden" value=""/>';
+			liStr += '<button type="submit" class="reserveButton">Reserve</button></form></td></tr></table></li>';
+			
 			for (var m = 0; m < volumes.length; m++) {
 				var volume = volumes[m];
 				var isbn = null;
@@ -137,6 +143,17 @@
 				li.find(".isbn").html(isbn);
 				if (!isSale) {
 					li.find(".reserveButton").hide();
+				} else {
+					var jbook = {
+							isbn: isbn,
+							title: title,
+							cover: thumbnail,
+							publisher: volume.volumeInfo.publisher,
+							categories: volume.volumeInfo.categories,
+							authors: volume.volumeInfo.authors,
+							price: volume.saleInfo.listPrice
+					}
+					li.find(".input").attr("value", JSON.stringify(jbook, null, 2));
 				}
 				list.append(li);
 			}
@@ -220,14 +237,17 @@ body {
 	text-align: center;
 	float: left;
 }
-.reserveButton{
-	float:right
+
+.reserveButton {
+	float: right
 }
-table{
-border:1px solid #000;
+
+table {
+	border: 1px solid #000;
 }
-td{
-border:none;
+
+td {
+	border: none;
 }
 </style>
 
@@ -240,65 +260,66 @@ border:none;
 			<li><a href="#tabs-2">Online Book Search</a></li>
 		</ul>
 		<div id="tabs-1">
-		<form method="post" action="<c:url value='/BookServlet?method=search' />">
-			Title <input name="title" /> &nbsp;&nbsp; Author <input name="author" />
-			&nbsp;&nbsp; <br /> Publisher <input name="publisher" /> &nbsp;&nbsp;
-			ISBN <input name="isbn" />
-			<!-- <select name="categories" id="categoryType">
+			<form method="post"
+				action="<c:url value='/BookServlet?method=search' />">
+				Title <input name="title" /> &nbsp;&nbsp; Author <input
+					name="author" /> &nbsp;&nbsp; <br /> Publisher <input
+					name="publisher" /> &nbsp;&nbsp; ISBN <input name="isbn" />
+				<!-- <select name="categories" id="categoryType">
 				<c:forEach items="${categories }" var="category">
 					<option value="${category.categoryname }">${category.categoryname }</option>
 				</c:forEach>
 			</select> -->
-			<button type="submit">Search</button>
-		
-		</form>
-			
+				<button type="submit">Search</button>
+
+			</form>
+
 			<br /> <br />
 			<c:choose>
 				<c:when test="${empty msg }">
-				<c:forEach items="${list }" var="book">
-				<div class="icon">
-					<%--book_img/9317290-1_l.jpg --%>
-					<%-- <a href="<c:url value='/BookServlet?method=load&isbn=${book.isbn }'/>"><img src="/onlinebookstore/book_img/9317290-1_l.jpg"/></a> --%>
-					<a
-						href="<c:url value='/BookServlet?method=load&isbn=${book.isbn }'/>"><img
-						src="<c:url value='/${book.cover }'/>" /></a> <br /> <a
-						href="<c:url value='/BookServlet?method=load&isbn=${book.isbn }'/>">${book.title }</a>
-				</div>
-			</c:forEach>
+					<c:forEach items="${list }" var="book">
+						<div class="icon">
+							<%--book_img/9317290-1_l.jpg --%>
+							<%-- <a href="<c:url value='/BookServlet?method=load&isbn=${book.isbn }'/>"><img src="/onlinebookstore/book_img/9317290-1_l.jpg"/></a> --%>
+							<a
+								href="<c:url value='/BookServlet?method=load&isbn=${book.isbn }'/>"><img
+								src="<c:url value='/${book.cover }'/>" /></a> <br /> <a
+								href="<c:url value='/BookServlet?method=load&isbn=${book.isbn }'/>">${book.title }</a>
+						</div>
+					</c:forEach>
 				</c:when>
 				<c:otherwise>
-				<p>${msg }</p>
+					<p>${msg }</p>
 				</c:otherwise>
 			</c:choose>
 
-			
+
 		</div>
 		<div id="tabs-2">
-			
+
 			Title <input id="title" /> &nbsp;&nbsp; Author <input id="author" />
 			&nbsp;&nbsp; <br /> Publisher <input id="publisher" /> &nbsp;&nbsp;
 			ISBN <input id="isbn" />
 			<button id="searchBook">Search</button>
 			<br /> <br />
-		
-		<div class="pageLink" hidden>
+
+			<div class="pageLink" hidden>
 				<button class="fPage">FIRST</button>
 				<button class="pPage">PREV</button>
 				Page <b id="cPage">12</b> / <b id="tPage">10</b>
 				<button class="nPage">NEXT</button>
 			</div>
-		<div>
-			<ol id="bookList">
-			</ol>
+			<div>
+				<ol id="bookList">
+				</ol>
+			</div>
+			<div class="pageLink" hidden>
+				<button class="fPage">FIRST</button>
+				<button class="pPage">PREV</button>
+				Page <b id="cPage">12</b> / <b id="tPage">10</b>
+				<button class="nPage">NEXT</button>
+			</div>
 		</div>
-		<div class="pageLink" hidden>
-			<button class="fPage">FIRST</button>
-			<button class="pPage">PREV</button>
-			Page <b id="cPage">12</b> / <b id="tPage">10</b>
-			<button class="nPage">NEXT</button>
-		</div>
-	</div>
 	</div>
 </body>
 </html>

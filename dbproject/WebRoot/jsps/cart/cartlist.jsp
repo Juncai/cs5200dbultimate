@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -87,7 +88,16 @@
 	</tr>
 	<c:forEach items="${cartItems }" var="cartItem">
 	<tr>
-		<td><div><img src="<c:url value='/${cartItem.book.cover }'/>"/></div></td>
+		<td><div>
+		<c:choose>
+								<c:when test="${fn:startsWith(cartItem.book.cover, 'book_img') }">
+									<img src="<c:url value='/${cartItem.book.cover }'/>" height="150" />
+								</c:when>
+								<c:otherwise>
+									<img src="${cartItem.book.cover }" height="150" />
+								</c:otherwise>
+							</c:choose>
+		</div></td>
 		<td>${cartItem.book.title }</td>
 		<td><c:forEach items="${cartItem.book.authors }" var="author" >${author.firstname } ${author.lastname }  </c:forEach></td>
 		<td>$ <fmt:formatNumber value="${cartItem.book.price }" pattern="0.00"/></td>

@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -80,7 +81,14 @@ li {
 				<tr bordercolor="gray" align="center">
 					<td width="15%">
 						<div>
-							<img src="<c:url value='/${orderItem.book.cover }'/>" height="75" />
+							<c:choose>
+								<c:when test="${fn:startsWith(orderItem.book.cover, 'book_img') }">
+									<img src="<c:url value='/${orderItem.book.cover }'/>" height="75" />
+								</c:when>
+								<c:otherwise>
+									<img src="${orderItem.book.cover }" height="75" />
+								</c:otherwise>
+							</c:choose>
 						</div>
 					</td>
 					<td>Title: ${orderItem.book.title }</td>

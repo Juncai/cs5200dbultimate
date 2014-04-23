@@ -127,31 +127,35 @@ public class BookDaoImpl implements BookDao {
 		try {
 			List<Map<String, Object>> mapList = qr.query(sql,
 					new MapListHandler(), isbn);
-			Map<String, Object> map = mapList.remove(0);
-			Book book = CommonUtils.toBean(map, Book.class);
-			Publisher publisher = CommonUtils.toBean(map, Publisher.class);
-			Category category = CommonUtils.toBean(map, Category.class);
-			List<Author> authorList = new ArrayList<Author>();
-			authorList.add(CommonUtils.toBean(map, Author.class));
-			for (Map<String, Object> map1 : mapList) {
-				authorList.add(CommonUtils.toBean(map1, Author.class));
+			if (!mapList.isEmpty()) {				
+				Map<String, Object> map = mapList.remove(0);
+				Book book = CommonUtils.toBean(map, Book.class);
+				Publisher publisher = CommonUtils.toBean(map, Publisher.class);
+				Category category = CommonUtils.toBean(map, Category.class);
+				List<Author> authorList = new ArrayList<Author>();
+				authorList.add(CommonUtils.toBean(map, Author.class));
+				for (Map<String, Object> map1 : mapList) {
+					authorList.add(CommonUtils.toBean(map1, Author.class));
+				}
+				book.setPublisher(publisher);
+				book.setCategory(category);
+				book.setAuthors(authorList);
+				return book;
+			} else {
+				return null;
 			}
-			book.setPublisher(publisher);
-			book.setCategory(category);
-			book.setAuthors(authorList);
-			return book;
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 	}
 
 	public void mod(Book book) {
-		String sql = "UPDATE book SET isbn=?,title=?,price=?,cover=?,rating=?,publisherID=?,categoryID=?,isdel=?,reserved=?";
+		String sql = "UPDATE book SET title=?,price=?,cover=?,rating=?,publisherID=?,categoryID=?,isdel=?,reserved=? WHERE isbn=?";
 		try {
-			qr.update(sql, book.getIsbn(), book.getTitle(), book.getPrice(),
+			qr.update(sql, book.getTitle(), book.getPrice(),
 					book.getCover(), book.getRating(), book.getPublisher()
 							.getPublisherID(), book.getCategory()
-							.getCategoryID(), book.isIsdel(), book.isReserved());
+							.getCategoryID(), book.isIsdel(), book.isReserved(), book.getIsbn());
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -159,7 +163,7 @@ public class BookDaoImpl implements BookDao {
 	}
 
 	public void del(String isbn) {
-		String sql = "DELETE FROM book WHERE isbn=?";
+		String sql = "UPDATE book SET isdel=true WHERE isbn=?";
 		try {
 			qr.update(sql, isbn);
 		} catch (SQLException e) {
@@ -176,6 +180,16 @@ public class BookDaoImpl implements BookDao {
 							.getCategoryID(), book.isIsdel(), book.isReserved());
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
+		}
+		
+		// insert into the bookauthor table
+		sql = "INSERT INTO bookauthor VALUES(?,?)";
+		for (Author author : book.getAuthors()) {
+			try {
+				qr.update(sql, author.getAuthorID(), book.getIsbn());
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			}
 		}
 	}
 
@@ -307,6 +321,153 @@ public class BookDaoImpl implements BookDao {
 	public Book findBook(String field, String value) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public List<Book> findReserved(){
+		String sql = "SELECT * FROM book b,publisher p,category c,author a,"
+				+ "bookauthor ba WHERE b.isbn=ba.isbn AND ba.authorID=a.authorID "
+				+ "AND b.categoryID=c.categoryID AND b.publisherID=p.publisherID "
+				+ "AND isdel=FALSE AND reserved=TRUE;";
+
+		try {
+			List<Book> bookList = new ArrayList<Book>();
+			List<Map<String, Object>> mapList = qr.query(sql,
+					new MapListHandler());
+			if (mapList.size() > 0) {
+				Map<String, Object> map0 = mapList.remove(0);
+				Book book = CommonUtils.toBean(map0, Book.class);
+				String oldISBN = book.getIsbn();
+				String newISBN;
+				Publisher publisher = CommonUtils.toBean(map0, Publisher.class);
+				Category category = CommonUtils.toBean(map0, Category.class);
+				List<Author> authorList = new ArrayList<Author>();
+				Author author = CommonUtils.toBean(map0, Author.class);
+				authorList.add(author);
+				book.setPublisher(publisher);
+				book.setCategory(category);
+				
+				for (Map<String, Object> map : mapList) {
+					newISBN = (String) map.get("isbn");
+					if (!oldISBN.equals(newISBN)) {
+						book.setAuthors(authorList);
+						bookList.add(book);	// add the previous book
+						
+						book = CommonUtils.toBean(map, Book.class);
+						publisher = CommonUtils.toBean(map, Publisher.class);
+						category = CommonUtils.toBean(map, Category.class);
+						book.setPublisher(publisher);
+						book.setCategory(category);
+						authorList = new ArrayList<Author>();
+						oldISBN = newISBN;
+					}
+					authorList.add(CommonUtils.toBean(map, Author.class));
+				}
+				book.setAuthors(authorList);
+				bookList.add(book);	// add the last book
+			}
+			
+			return bookList;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public List<Book> findInStore(){
+		String sql = "SELECT * FROM book b,publisher p,category c,author a,"
+				+ "bookauthor ba WHERE b.isbn=ba.isbn AND ba.authorID=a.authorID "
+				+ "AND b.categoryID=c.categoryID AND b.publisherID=p.publisherID "
+				+ "AND isdel=FALSE AND reserved=FALSE;";
+
+		try {
+			List<Book> bookList = new ArrayList<Book>();
+			List<Map<String, Object>> mapList = qr.query(sql,
+					new MapListHandler());
+			if (mapList.size() > 0) {
+				Map<String, Object> map0 = mapList.remove(0);
+				Book book = CommonUtils.toBean(map0, Book.class);
+				String oldISBN = book.getIsbn();
+				String newISBN;
+				Publisher publisher = CommonUtils.toBean(map0, Publisher.class);
+				Category category = CommonUtils.toBean(map0, Category.class);
+				List<Author> authorList = new ArrayList<Author>();
+				Author author = CommonUtils.toBean(map0, Author.class);
+				authorList.add(author);
+				book.setPublisher(publisher);
+				book.setCategory(category);
+				
+				for (Map<String, Object> map : mapList) {
+					newISBN = (String) map.get("isbn");
+					if (!oldISBN.equals(newISBN)) {
+						book.setAuthors(authorList);
+						bookList.add(book);	// add the previous book
+						
+						book = CommonUtils.toBean(map, Book.class);
+						publisher = CommonUtils.toBean(map, Publisher.class);
+						category = CommonUtils.toBean(map, Category.class);
+						book.setPublisher(publisher);
+						book.setCategory(category);
+						authorList = new ArrayList<Author>();
+						oldISBN = newISBN;
+					}
+					authorList.add(CommonUtils.toBean(map, Author.class));
+				}
+				book.setAuthors(authorList);
+				bookList.add(book);	// add the last book
+			}
+			
+			return bookList;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public List<Book> findInStoreByCategoryID(String categoryID) {
+		String sql = "SELECT * FROM book b,publisher p,category c,author a,"
+				+ "bookauthor ba WHERE b.isbn=ba.isbn AND ba.authorID=a.authorID "
+				+ "AND b.categoryID=c.categoryID AND b.publisherID=p.publisherID "
+				+ "AND isdel=FALSE AND b.categoryID=? AND reserved=FALSE;";
+
+		try {
+			List<Book> bookList = new ArrayList<Book>();
+			List<Map<String, Object>> mapList = qr.query(sql,
+					new MapListHandler(), categoryID);
+			if (mapList.size() > 0) {
+				Map<String, Object> map0 = mapList.remove(0);
+				Book book = CommonUtils.toBean(map0, Book.class);
+				String oldISBN = book.getIsbn();
+				String newISBN;
+				Publisher publisher = CommonUtils.toBean(map0, Publisher.class);
+				Category category = CommonUtils.toBean(map0, Category.class);
+				List<Author> authorList = new ArrayList<Author>();
+				Author author = CommonUtils.toBean(map0, Author.class);
+				authorList.add(author);
+				book.setPublisher(publisher);
+				book.setCategory(category);
+				
+				for (Map<String, Object> map : mapList) {
+					newISBN = (String) map.get("isbn");
+					if (!oldISBN.equals(newISBN)) {
+						book.setAuthors(authorList);
+						bookList.add(book);	// add the previous book
+						
+						book = CommonUtils.toBean(map, Book.class);
+						publisher = CommonUtils.toBean(map, Publisher.class);
+						category = CommonUtils.toBean(map, Category.class);
+						book.setPublisher(publisher);
+						book.setCategory(category);
+						authorList = new ArrayList<Author>();
+						oldISBN = newISBN;
+					}
+					authorList.add(CommonUtils.toBean(map, Author.class));
+				}
+				book.setAuthors(authorList);
+				bookList.add(book);	// add the last book
+			}
+			
+			return bookList;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 }
