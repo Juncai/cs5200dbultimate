@@ -91,7 +91,6 @@ li {
 	</table>
 	<br />
 	<a
-		href="<c:url value='/order/OrderServlet?method=updatePay&orderID=${order.orderID }'/>">Make
-		Payment</a>
+		href="<c:url value='/order/OrderServlet?method=updatePay&orderID=${order.orderID }'/>"><img src="<c:url value='/images/payment.jpg'/>" width="150" height="75"></a>
 </body>
 </html>

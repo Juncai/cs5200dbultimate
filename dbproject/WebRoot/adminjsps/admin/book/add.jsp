@@ -103,7 +103,7 @@
 					} else if(nameArray.legnth == 3){
 						lastName = nameArray[2];
 					}
-					var liStr = '<li><p id="firstName"></p> &nbsp; <p id="lastName"></p></li>';
+					var liStr = '<li><span id="firstName"></span> &nbsp; <span id="lastName"></span></li>';
 					var li = jQuery(liStr);
 					li.find("#firstName").text(firstName);
 					li.find("#lastName").text(lastName);
@@ -174,20 +174,20 @@ body {
 			method="post">
 			ISBN: <input id="isbn" style="width: 150px; height: 20px;" type="text"
 				name="isbn" value=""/>
-			<br /> Title: <p id="title"></p> <br /> 
-			Cover: <img id="cover" src="" border="0"/><br />
+			<br /><br />  Title: <span id="title"></span> <br /> <br /> 
+			<span style="">Cover: <img id="cover" src="" border="0" align="absmiddle"/></span><br /><br /> 
 			Price: <input id="price" style="width: 150px; height: 20px;" type="text"
-				name="price" value=""/><br /> 
+				name="price" value=""/><br /> <br /> 
 				Author: 
 				<ol id="authors">
 				</ol> 
-				Publisher: <p></p><br />
+				Publisher: <span id="publisher"></span><br /><br />
 			Category: <select id="category" style="width: 150px; height: 20px;"
 				name="category">
 				<c:forEach items="${categoryList }" var="category">
 					<option value="${category.categoryname }">${category.categoryname }</option>
 				</c:forEach>
-			</select> <br /> 
+			</select> <br /> <br /> 
 			<input id="bookJson" name="bookJson" type="hidden" value=""/>
 			<input type="submit" value="Add book" />
 		</form>

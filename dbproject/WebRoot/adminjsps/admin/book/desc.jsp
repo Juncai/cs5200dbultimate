@@ -61,8 +61,8 @@
   	<input type="hidden" name="isbn" value="${book.isbn }"/>
   	Title: ${book.title }<br/>
   	Price: $ <input type="text" name="price" value="${book.price }"/><br/>
-  	Author: <br/><c:forEach items="${book.authors }"
-							var="author">${author.firstname } ${author.lastname } <br/>   </c:forEach>
+  	Author: <br/><ol><c:forEach items="${book.authors }"
+							var="author"><li>${author.firstname } ${author.lastname } </li>   </c:forEach></ol>
   	Category: <select style="width: 150px; height: 20px;" name="categoryID"> 
 			<c:forEach items="${categoryList }" var="category">
      		<c:choose>
