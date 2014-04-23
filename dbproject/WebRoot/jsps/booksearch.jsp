@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE HTML>
 <html>
@@ -282,8 +283,16 @@ td {
 							<%--book_img/9317290-1_l.jpg --%>
 							<%-- <a href="<c:url value='/BookServlet?method=load&isbn=${book.isbn }'/>"><img src="/onlinebookstore/book_img/9317290-1_l.jpg"/></a> --%>
 							<a
-								href="<c:url value='/BookServlet?method=load&isbn=${book.isbn }'/>"><img
-								src="<c:url value='/${book.cover }'/>" /></a> <br /> <a
+								href="<c:url value='/BookServlet?method=load&isbn=${book.isbn }'/>">
+								<c:choose>
+									<c:when test="${fn:startsWith(book.cover, 'book_img') }">
+										<img src="<c:url value='/${book.cover }'/>" border="0" />
+									</c:when>
+									<c:otherwise>
+										<img src="${book.cover }" border="0" height="150" />
+									</c:otherwise>
+								</c:choose>
+							</a> <br /> <a
 								href="<c:url value='/BookServlet?method=load&isbn=${book.isbn }'/>">${book.title }</a>
 						</div>
 					</c:forEach>
