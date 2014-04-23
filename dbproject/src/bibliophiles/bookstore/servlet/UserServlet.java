@@ -67,7 +67,7 @@ public class UserServlet extends BaseServlet {
 		request.setAttribute("msg", "Signup success.");
 		List<String> links = new ArrayList<String>();
 		links.add("<a href='" + request.getContextPath() + "/index.jsp'>Main page</a>");
-		links.add("<a href='" + request.getContextPath() + "/jsps/login.jsp'>Login</a>");
+		links.add("<a href='" + request.getContextPath() + "/UserServlet?method=loginPre'>login</a></a>");
 		request.setAttribute("links", links);
 		return "/jsps/msg.jsp";
 	}
